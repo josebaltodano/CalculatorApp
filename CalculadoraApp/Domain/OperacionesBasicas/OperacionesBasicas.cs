@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Domain.OperacionesBasicas
 {
-   public   class   OperacionesBasicas
+   public class OperacionesBasicas
     {
      
 
