@@ -52,10 +52,19 @@
     <Compile Include="Formularios\BasicCalculatorForm.Designer.cs">
       <DependentUpon>BasicCalculatorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FormIntegrales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormIntegrales.Designer.cs">
+      <DependentUpon>FormIntegrales.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Formularios\BasicCalculatorForm.resx">
       <DependentUpon>BasicCalculatorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FormIntegrales.resx">
+      <DependentUpon>FormIntegrales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -89,6 +98,5 @@
       <Name>Infraestructura</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -3,8 +3,10 @@
     "",
     "\\CalculadoraApp",
     "\\CalculadoraApp\\CalculadoraApp",
-    "\\CalculadoraApp\\CalculadoraApp\\Formularios"
+    "\\CalculadoraApp\\CalculadoraApp\\Formularios",
+    "\\CalculadoraApp\\Infraestructura",
+    "\\CalculadoraApp\\Infraestructura\\Metodos"
   ],
-  "SelectedNode": "\\CalculadoraApp\\CalculadoraApp\\Formularios\\BasicCalculatorForm.cs",
+  "SelectedNode": "\\CalculadoraApp\\CalculadoraApp\\Formularios\\FormIntegrales.cs",
   "PreviewInSolutionExplorer": false
 }

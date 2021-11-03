@@ -12,10 +12,16 @@ namespace Infraestructura.Metodos
 
         private OperacionesBasicas operacionesBasicas=new OperacionesBasicas();
         public double[] numeros;
-        int a = 0;
+        int a1 = 0,b=0,a;
         public int y = 0;
         public char operador='v';
         public double numero1 = 0, numero2 = 0;
+        string operadorT = "";
+        char AngPlano = 'r';
+        public void Ang(char an)
+        {
+            AngPlano = an;
+        }
         public void Add(double n)
         {
             if (numeros==null)
@@ -29,10 +35,6 @@ namespace Infraestructura.Metodos
             tmp[tmp.Length - 1] = n;
             numeros = tmp;
 
-
-        }
-        public void ViewNumber(string txt)
-        {
 
         }
         public double GetNumber(string txt,char op)
@@ -73,12 +75,133 @@ namespace Infraestructura.Metodos
                 a++;
             }
         }
+        double r = 0;
         public double Resultado()
         {
-            double r=0;
-            if (operador=='v')
+            
+            switch (operadorT)
             {
-                return numero1;
+                case "Cos":
+                    
+                     if (AngPlano == 'r')
+                     {
+                        numero1 = Math.Cos(numero2);
+                        r = numero1;
+                        numero2 = 0;
+                        operadorT = "";
+                        operador = 'v';
+                     }
+                     else
+                     {
+                        double n = numero2*(Math.PI / 180);
+                        numero1 = Math.Cos(n);
+                        r = numero1;
+                        numero2 = 0;
+                        operadorT = "";
+                        operador = 'v';
+                    }
+                    
+                    break;
+                case "Sen":
+                    if (AngPlano == 'r')
+                    {
+                        numero1 = Math.Sin(numero2);
+                        r = numero1;
+                        numero2 = 0;
+                        operadorT = "";
+                        operador = 'v';
+                    }
+                    else
+                    {
+                        double n = numero2 * (Math.PI / 180);
+                        numero1 = Math.Sin(n);
+                        r = numero1;
+                        numero2 = 0;
+                        operadorT = "";
+                        operador = 'v';
+                    }
+                    break;
+                case "Tan":
+                    if (AngPlano == 'r')
+                    {
+                        numero1 = Math.Tan(numero2);
+                        r = numero1;
+                        numero2 = 0;
+                        operadorT = "";
+                        operador = 'v';
+                    }
+                    else
+                    {
+                        double n = numero2 * (Math.PI / 180);
+                        numero1 = Math.Tan(n);
+                        r = numero1;
+                        numero2 = 0;
+                        operadorT = "";
+                        operador = 'v';
+                    }
+                    break;
+                case "Cosh":
+
+                    if (AngPlano == 'r')
+                    {
+                        numero1 = Math.Cosh(numero2);
+                        r = numero1;
+                        numero2 = 0;
+                        operadorT = "";
+                        operador = 'v';
+                    }
+                    else
+                    {
+                        double n = numero2 * (Math.PI / 180);
+                        numero1 = Math.Cosh(n);
+                        r = numero1;
+                        numero2 = 0;
+                        operadorT = "";
+                        operador = 'v';
+                    }
+
+                    break;
+                case "Senh":
+
+                    if (AngPlano == 'r')
+                    {
+                        numero1 = Math.Sinh(numero2);
+                        r = numero1;
+                        numero2 = 0;
+                        operadorT = "";
+                        operador = 'v';
+                    }
+                    else
+                    {
+                        double n = numero2 * (Math.PI / 180);
+                        numero1 = Math.Sinh(n);
+                        r = numero1;
+                        numero2 = 0;
+                        operadorT = "";
+                        operador = 'v';
+                    }
+                    break;
+                case "Tanh":
+
+                    if (AngPlano == 'r')
+                    {
+                        numero1 = Math.Tanh(numero2);
+                        r = numero1;
+                        numero2 = 0;
+                        operadorT = "";
+                        operador = 'v';
+                    }
+                    else
+                    {
+                        double n = numero2 * (Math.PI / 180);
+                        numero1 = Math.Tanh(n);
+                        r = numero1;
+                        numero2 = 0;
+                        operadorT = "";
+                        operador = 'v';
+                    }
+
+                    break;
             }
             switch (operador)
             {
@@ -108,6 +231,10 @@ namespace Infraestructura.Metodos
                     numero2 = 0;
                     break;
                 case '÷':
+                    if (numero2 == 0)
+                    {
+                        throw new ArgumentException("Error Matematico: (a/0 no existe)");
+                    }
                     r= numero1 / numero2;
                     numero1 = r;
                     numero2 = 0;
@@ -127,57 +254,258 @@ namespace Infraestructura.Metodos
                     numero1 = r;
                     numero2 = 0;
                     break;
-               
+                case 'l':
+                    r = Math.Log10(numero2);
+                    numero1 = r;
+                    numero2 = 0;
+                    break;
+                case 'n':
+                    r = Math.Log(numero2, Math.E);
+                    numero1 = r;
+                    numero2 = 0;
+                    break;
             }
-            
             return r;
+        }
+
+        public void MasMenos(ref string txt,ref string rtb)
+        {
+            if (txt == "0")
+            {
+                return;
+            }
+            string c = "";
+            double v = double.Parse(txt);
+            if (rtb.Length == v.ToString().Length)
+            {
+                if (v > 0)
+                {
+                    c = "-" + txt;
+                    txt = c;
+                    rtb = c;
+                }
+                else
+                {
+                    c = txt.Substring(1);
+                    txt = c;
+                    c = rtb.Substring(0, rtb.Length - 2);
+                    rtb = c + txt;
+                }
+            }
+            else
+            {
+                if (v > 0)
+                {
+                    c = "-" + txt;
+                    txt = c;
+                    //c = txtOperacion.Text.Substring(0, txtOperacion.Text.Length - 2);
+                    //txtOperacion.Text = c + txtView.Text;
+                }
+                else
+                {
+                    
+                    c = txt.Substring(1);
+                    txt = c;
+                    //c = txtOperacion.Text.Substring(0, txtOperacion.Text.Length - 2);
+                    //txtOperacion.Text = c + txtView.Text;
+                }
+            }
+        }
+        public void OperacionesCien(ref string txt,ref string rtb,string btn)
+        {
+            if (string.IsNullOrEmpty(rtb))
+            {
+                rtb = "0";
+            }
+            if (btn == "Log")
+            {
+                operador ='l';
+            }
+            else if (btn == "Ln")
+            {
+                operador = 'n';
+            }
+            string op = operador.ToString();
+            string verificar = rtb.Substring(rtb.Length-1);
+            Guardarnum(double.Parse(txt));
+            if (double.TryParse(verificar,out double f)) {
+                if (a == 1)
+                {
+                    rtb = btn;
+                }
+                else
+                {
+                    rtb += btn;
+                }
+                operadorT = btn;
+                txt = "0";
+            }
+            else if(verificar==op)
+            {
+                rtb += btn;
+                operadorT = btn;
+                txt = "0";
+            }
+            else
+            {
+                return;
+            }
+        }
+        public void Igual(ref string txt, ref string rtb)
+        {
+            string verificar = rtb.Substring(rtb.Length - 1);
+            if (operador == '%')
+            {
+                Guardarnum(double.Parse(txt));
+                rtb += txt;
+                txt = Resultado().ToString();
+                a1 = 0;
+            }
+            else
+            {
+                if (double.TryParse(verificar, out double f))
+                {
+                    Guardarnum(double.Parse(txt));
+                    if (operador == 'v')
+                    {
+                        txt = Resultado().ToString();
+                        rtb += " = " + txt;
+                        a = 0;
+                    }
+                    else
+                    {
+                        rtb += $"{operador}" + txt;
+                        txt = Resultado().ToString();
+                        rtb += " = " + txt;
+                        a = 0;
+                    }
+                }
+                else
+                {
+                    Guardarnum(double.Parse(txt));
+                    rtb += txt;
+                    txt = Resultado().ToString();
+                    rtb += " = " + txt;
+                    a = 0;
+                }
+            }
+        }
+        public void Quitar(ref string txt, ref string rtb)
+        {
+            string c = txt.Substring(0, txt.Length - 1);
+            txt = c;
+            if (operador == 'v')
+            {
+                rtb = c;
+            }
+            if (txt == string.Empty)
+            {
+                txt = "0";
+            }
+        }
+        public void Operaciones(ref string txt, ref string rtb,string button)
+        {
+            if (rtb != string.Empty)
+            {
+                string verificar = rtb.Substring(rtb.Length - 1);
+                if (button == "%")
+                {
+                    Guardarnum(double.Parse(txt));
+                    operador = '%';
+                    rtb = string.Empty;
+                    txt = Resultado().ToString();
+                    return;
+                }
+                else
+                if (!double.TryParse(verificar, out double a))
+                {
+                    return;
+                }
+            }
+            if (button != "√")
+            {
+                rtb = txt;
+            }
+            else
+            {
+                rtb = string.Empty;
+            }
+            if (a1 >= 1)
+            {
+                Guardarnum(double.Parse(txt));
+                rtb += button;
+                b = 1;
+                rtb = txt + button;
+                if (button == "%")
+                {
+                    operador = '+';
+                }
+                else
+                {
+                    operador = Convert.ToChar(button);   
+                }
+            }
+            else
+            {
+                Guardarnum(double.Parse(txt));
+                txt = "0";
+                operador = Convert.ToChar(button);
+                if (button == "%")
+                {
+                    operador = '%';
+                    rtb = string.Empty;
+                    txt = Resultado().ToString();
+                }
+                else 
+                {
+                    if (button == "√")
+                    {
+                        rtb = button;
+                    }
+                    else
+                    {
+                        rtb += button;
+                    }
+                }
+            }
+            a1++;
+        }
+        public void ViewNumber(ref string txt, ref string rtb, string button)
+        {
+            if (b >= 1)
+            {
+                txt = string.Empty;
+                b--;
+            }
+            if (txt == "0")
+            {
+                txt = string.Empty;
+            }
+            if (button == "π")
+            {
+
+                txt = Math.PI.ToString();
+                return;
+            }
+            else if(button=="e")
+            {
+                txt = Math.E.ToString();
+            }
+            else
+            {
+                txt += button;
+            }
         }
         public void Reiniciar()
         {
+            operadorT = "";
+            operador = 'v';
+            r = 0;
+            b = 0;
+            a1 = 0;
             a = 0;
             numero1 = 0;
             numero2 = 0;
-        }
-        public double  Getsuma()
-        {
-            return a;
-        }
-        public double GetResta()
-        { double x = 0;
-            for(int I =0; I < operacionesBasicas.resta.Length; I++)
-            {
-                x = x - operacionesBasicas.resta[I];
-            }
-            return x;
-        }
-        public double GetMultiplicacion() {
-
-            double emp = 0;
-            for (int i=0; i < operacionesBasicas.Multiplicaion.Length; i++)
-            {
-                emp = emp * operacionesBasicas.Multiplicaion[i];
-            }
-            return emp;
-        }
-         
-        public double GetDivision()
-        {
-            double tem = 0;
-            for (int i =0; i< operacionesBasicas.division.Length; i++)
-            {
-                tem = tem / operacionesBasicas.division[i];
-            }
-            return tem;
-        }
-
-        public double GetElevarUnNumero()
-        {
-            double elv = 0;
-            for(int I=0; I < operacionesBasicas.Elevacion.Length; I++)
-            {
-                elv = Math.Pow(elv, operacionesBasicas.Elevacion[I]);
-            }
-            return 0;
         }
         #endregion
     }

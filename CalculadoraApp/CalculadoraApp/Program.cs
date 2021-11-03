@@ -17,7 +17,8 @@ namespace CalculadoraApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new BasicCalculatorForm());
+            Application.Run(new FormIntegrales());
+            //Application.Run(new BasicCalculatorForm());
         }
     }
 }

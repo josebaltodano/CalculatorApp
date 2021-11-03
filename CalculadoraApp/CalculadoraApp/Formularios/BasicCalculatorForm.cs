@@ -14,7 +14,6 @@ namespace CalculadoraApp.Formularios
     public partial class BasicCalculatorForm : Form
     {
         MetodoDeOperaciones metodoDeOperaciones;
-        int a = 0, b = 0;
         public BasicCalculatorForm()
         {
             metodoDeOperaciones = new MetodoDeOperaciones();
@@ -22,125 +21,61 @@ namespace CalculadoraApp.Formularios
         }
         private void ViewNumber(object sender, EventArgs e)
         {
-            var button = (Button)sender;
-            if (b >= 1)
+            try
             {
-                txtView.Text = string.Empty;
-                b--;
+                var button = (Button)sender;
+                string txt = txtView.Text, rtb = rtbOperacion.Text;
+                metodoDeOperaciones.ViewNumber(ref txt, ref rtb, button.Tag.ToString());
+                txtView.Text = txt;
+                rtbOperacion.Text = rtb;
             }
-            if (txtView.Text == "0")
+            catch (Exception ex)
             {
-                txtView.Text = string.Empty;
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (button.Text == "π")
-            {
-
-                txtView.Text = Math.PI.ToString();
-                return;
-            }
-            else
-            {
-                txtView.Text += button.Text;
-            }
-            //txtOperacion.Text += button.Text;
 
         }
-
         private void btnMasMenos_Click(object sender, EventArgs e)
         {
-            if (txtView.Text=="0")
+            try
             {
-                return;
+                string txt = txtView.Text, rtb = rtbOperacion.Text;
+                metodoDeOperaciones.MasMenos(ref txt, ref rtb);
+                txtView.Text = txt;
+                rtbOperacion.Text = rtb;
             }
-            string c="";
-            double v = double.Parse(txtView.Text);
-            if (rtbOperacion.Text.Length == v.ToString().Length)
+            catch (Exception ex)
             {
-                if (v > 0)
-                {
-                    c = "-" + txtView.Text;
-                    txtView.Text = c;
-                    rtbOperacion.Text = c;
-                }
-                else
-                {
-                    c = txtView.Text.Substring(1);
-                    txtView.Text = c;
-                    c = rtbOperacion.Text.Substring(0, rtbOperacion.Text.Length - 2);
-                    rtbOperacion.Text = c + txtView.Text;
-                }
-            }
-            else
-            {
-                if (v > 0)
-                {
-                    c = "-" + txtView.Text;
-                    txtView.Text = c;
-                    //c = txtOperacion.Text.Substring(0, txtOperacion.Text.Length - 2);
-                    //txtOperacion.Text = c + txtView.Text;
-                }
-                else
-                {
-                    c = txtView.Text.Substring(1);
-                    txtView.Text = c;
-                    //c = txtOperacion.Text.Substring(0, txtOperacion.Text.Length - 2);
-                    //txtOperacion.Text = c + txtView.Text;
-                }
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btnIgual_Click(object sender, EventArgs e)
         {
-            string verificar = rtbOperacion.Text.Substring(rtbOperacion.Text.Length - 1);
-            
-            if (metodoDeOperaciones.operador == '%')
+            try
             {
-                metodoDeOperaciones.Guardarnum(double.Parse(txtView.Text));
-                rtbOperacion.Text += txtView.Text;
-                txtView.Text = metodoDeOperaciones.Resultado().ToString();
-                a = 0;
+                string txt = txtView.Text, rtb = rtbOperacion.Text;
+                metodoDeOperaciones.Igual(ref txt, ref rtb);
+                txtView.Text = txt;
+                rtbOperacion.Text = rtb;
             }
-            else
+            catch (Exception ex)
             {
-                if (double.TryParse(verificar, out double a))
-                {
-                    metodoDeOperaciones.Guardarnum(double.Parse(txtView.Text));
-                    rtbOperacion.Text +=$"{metodoDeOperaciones.operador}"+ txtView.Text;
-                    txtView.Text = metodoDeOperaciones.Resultado().ToString();
-                    rtbOperacion.Text += " = " + txtView.Text;
-                    a = 0;
-                }
-                else
-                {
-                    metodoDeOperaciones.Guardarnum(double.Parse(txtView.Text));
-                    rtbOperacion.Text += txtView.Text;
-                    txtView.Text = metodoDeOperaciones.Resultado().ToString();
-                    rtbOperacion.Text += " = " + txtView.Text;
-                    a = 0;
-                }
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btnQuitar_Click(object sender, EventArgs e)
         {
-            string c = txtView.Text.Substring(0,txtView.Text.Length-1);
-            txtView.Text=c;
-            if (metodoDeOperaciones.operador=='v') {
-                rtbOperacion.Text = c;
-            }
-            if (txtView.Text == string.Empty)
-            {
-                txtView.Text = "0";
-            }
+            string txt = txtView.Text, rtb = rtbOperacion.Text;
+            metodoDeOperaciones.Quitar(ref txt, ref rtb);
+            txtView.Text = txt;
+            rtbOperacion.Text = rtb;
         }
-
         private void btnBorrarTodo_Click(object sender, EventArgs e)
         {
             metodoDeOperaciones.Reiniciar();
             rtbOperacion.Text = string.Empty;
             txtView.Text = "0";
         }
-
         private void btnBorrar_Click(object sender, EventArgs e)
         {
             txtView.Text = "0";
@@ -149,77 +84,55 @@ namespace CalculadoraApp.Formularios
                 rtbOperacion.Text = string.Empty;
             }
         }
-
-
         private void ClickOperaciones(object sender, EventArgs e)
         {
-            //txtOperacion.Text = "";
+            try
+            {
+                var button = (Button)sender;
+                string txt = txtView.Text, rtb = rtbOperacion.Text;
+                metodoDeOperaciones.Operaciones(ref txt, ref rtb, button.Tag.ToString());
+                txtView.Text = txt;
+                rtbOperacion.Text = rtb;
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message,"",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
+        private void ClickTrigonometria(object sender, EventArgs e)
+        {
+            try
+            {
+                var button = (Button)sender;
+                string txt = txtView.Text, rtb = rtbOperacion.Text;
+                metodoDeOperaciones.OperacionesCien(ref txt, ref rtb, button.Text.ToString());
+                txtView.Text = txt;
+                rtbOperacion.Text = rtb;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void RadGrad(object sender, EventArgs e)
+        {
             var button = (Button)sender;
-            if (rtbOperacion.Text != string.Empty)
+            if (button.Text == "Grad")
             {
-                string verificar = rtbOperacion.Text.Substring(rtbOperacion.Text.Length - 1);
-                if(button.Text== "%")
-                {
-                    metodoDeOperaciones.Guardarnum(double.Parse(txtView.Text));
-                    metodoDeOperaciones.operador = '%';
-                    rtbOperacion.Text = string.Empty;
-                    txtView.Text = metodoDeOperaciones.Resultado().ToString();
-                    return;
-                }
-                else
-                if (!double.TryParse(verificar, out double a))
-                {
-                    return;
-                }
-            }
-            if (button.Tag.ToString() != "√")
-            {
-                if (txtView.Text == "0")
-                {
-                    return;
-                }
-                rtbOperacion.Text = txtView.Text;
+                lblGrado.Visible = true;
+                lblRadians.Visible = false;
+                metodoDeOperaciones.Ang('g');
             }
             else
             {
-                rtbOperacion.Text = string.Empty;
+                lblGrado.Visible = false;
+                lblRadians.Visible = true;
+                metodoDeOperaciones.Ang('r');
             }
-            if (a >= 1)
-            {
-                metodoDeOperaciones.Guardarnum(double.Parse(txtView.Text));
-                rtbOperacion.Text += button.Tag;
-                //txtView.Text = metodoDeOperaciones.Resultado().ToString();
-                b = 1;
-                rtbOperacion.Text = txtView.Text + button.Tag;
-                if (button.Text == "%")
-                {
-                    metodoDeOperaciones.operador = '+';
-                    
+        }
 
-                }
-                else
-                {
-                    metodoDeOperaciones.operador = Convert.ToChar(button.Tag);
-                }
-            }
-            else
-            {
-                metodoDeOperaciones.Guardarnum(double.Parse(txtView.Text));
-                txtView.Text = "0";
-                //txtView.Text = metodoDeOperaciones.Resultado().ToString();
-                metodoDeOperaciones.operador = Convert.ToChar(button.Tag);
-                if (button.Text == "%")
-                {
-                    metodoDeOperaciones.operador = '%';
-                    rtbOperacion.Text = string.Empty;
-                    txtView.Text = metodoDeOperaciones.Resultado().ToString();
-                }
-                else
-                {
-                    rtbOperacion.Text += button.Tag;
-                }
-            }
-            a++;
+        private void txtView_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

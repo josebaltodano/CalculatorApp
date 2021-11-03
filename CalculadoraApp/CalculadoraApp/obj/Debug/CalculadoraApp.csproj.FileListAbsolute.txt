@@ -13,3 +13,4 @@ C:\Users\Usuario\Desktop\Tarea de Curso\CalculadoraApp\CalculadoraApp\obj\Debug\
 C:\Users\Usuario\Desktop\Tarea de Curso\CalculadoraApp\CalculadoraApp\obj\Debug\CalculadoraApp.csproj.CopyComplete
 C:\Users\Usuario\Desktop\Tarea de Curso\CalculadoraApp\CalculadoraApp\obj\Debug\CalculadoraApp.exe
 C:\Users\Usuario\Desktop\Tarea de Curso\CalculadoraApp\CalculadoraApp\obj\Debug\CalculadoraApp.pdb
+C:\Users\Usuario\Desktop\Tarea de Curso\CalculadoraApp\CalculadoraApp\obj\Debug\CalculadoraApp.Formularios.FormIntegrales.resources
