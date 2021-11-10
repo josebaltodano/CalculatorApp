@@ -51,18 +51,20 @@ namespace CalculadoraApp.Formularios
         }
         private void btnIgual_Click(object sender, EventArgs e)
         {
-            try
-            {
+            /*try
+            {*/
+                metodoDeOperaciones.Verificar(txtInferior.Text, txtSuperior.Text, rtbOperacion.Text);
                 string txt = txtView.Text, rtb = rtbOperacion.Text;
-                metodoDeOperaciones.Igual(ref txt, ref rtb);
+                metodoDeOperaciones.Igual(ref txt, ref rtb, txtInferior.Text, txtSuperior.Text);
                 txtView.Text = txt;
                 rtbOperacion.Text = rtb;
-            }
+            /*}
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            }*/
         }
+
         private void btnQuitar_Click(object sender, EventArgs e)
         {
             string txt = txtView.Text, rtb = rtbOperacion.Text;
@@ -86,22 +88,23 @@ namespace CalculadoraApp.Formularios
         }
         private void ClickOperaciones(object sender, EventArgs e)
         {
-            try
-            {
+            /*try
+            {*/
                 var button = (Button)sender;
                 string txt = txtView.Text, rtb = rtbOperacion.Text;
-                metodoDeOperaciones.Operaciones(ref txt, ref rtb, button.Tag.ToString());
+                metodoDeOperaciones.Operaciones(ref txt, ref rtb, button.Tag.ToString(),txtInferior.Text);
                 txtView.Text = txt;
                 rtbOperacion.Text = rtb;
-            }catch(Exception ex)
+            /*}catch(Exception ex)
             {
                 MessageBox.Show(ex.Message,"",MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }
+            }*/
         }
         private void ClickTrigonometria(object sender, EventArgs e)
         {
             try
             {
+                metodoDeOperaciones.ObtenerSimb(rtbOperacion.Text);
                 var button = (Button)sender;
                 string txt = txtView.Text, rtb = rtbOperacion.Text;
                 metodoDeOperaciones.OperacionesCien(ref txt, ref rtb, button.Text.ToString());
@@ -134,5 +137,55 @@ namespace CalculadoraApp.Formularios
         {
 
         }
+
+        private void BasicCalculatorForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rtbOperacion_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnIntegral_Click(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
+            label1.Visible = true;
+            label2.Visible = true;
+            txtInferior.Visible = true;
+            txtSuperior.Visible = true;
+            rtbOperacion.Text = button.Text;
+        }
+        private void btnParentesis_Click(object sender, EventArgs e)
+        {
+            string rtb= rtbOperacion.Text;
+            string txtI = txtInferior.Text;
+            string txt = txtView.Text;
+            metodoDeOperaciones.AddC(ref rtb ,txtI,ref txt);
+            rtbOperacion.Text = rtb;
+            txtView.Text = txt;
+        }
+
+        private void btnVariable_Click(object sender, EventArgs e)
+        {
+           // string rtb = rtbOperacion.Text;
+            //metodoDeOperaciones.Variable(rtb, txtInferior.Text);
+            rtbOperacion.Text += "X";
+        }  
+        private void btnAbrirP_Click(object sender, EventArgs e)
+        {
+            if (rtbOperacion.Text == string.Empty)
+            {
+                rtbOperacion.Text = " ";
+            }
+            string verificar = rtbOperacion.Text.Substring(rtbOperacion.Text.Length - 1);
+            if (verificar != "(")
+            {
+                metodoDeOperaciones.AddA(rtbOperacion.Text.Length - 1);
+                rtbOperacion.Text += "(";
+            }
+        }
     }
+    
 }
