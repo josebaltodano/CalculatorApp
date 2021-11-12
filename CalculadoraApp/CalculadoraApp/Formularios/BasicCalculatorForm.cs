@@ -56,8 +56,17 @@ namespace CalculadoraApp.Formularios
                 metodoDeOperaciones.Verificar(txtInferior.Text, txtSuperior.Text, rtbOperacion.Text);
                 string txt = txtView.Text, rtb = rtbOperacion.Text;
                 metodoDeOperaciones.Igual(ref txt, ref rtb, txtInferior.Text, txtSuperior.Text);
+                string cos = btnCos.Text, sen = btnSen.Text, tan = btnTan.Text;
+                metodoDeOperaciones.ParentesisT(ref cos, ref sen, ref tan);
+                btnCos.Text = cos;
+                btnSen.Text = sen;
+                btnTan.Text = tan;
                 txtView.Text = txt;
                 rtbOperacion.Text = rtb;
+                label1.Visible = false;
+                label2.Visible = false;
+                txtInferior.Visible = false;
+                txtSuperior.Visible = false;
             /*}
             catch (Exception ex)
             {
@@ -74,7 +83,22 @@ namespace CalculadoraApp.Formularios
         }
         private void btnBorrarTodo_Click(object sender, EventArgs e)
         {
-            metodoDeOperaciones.Reiniciar();
+            string txtIn = txtInferior.Text, txtSu = txtSuperior.Text;
+            bool txtI = txtInferior.Visible, txtS = txtSuperior.Visible;
+            metodoDeOperaciones.Reiniciar(ref txtIn,ref txtSu,ref txtI,ref txtS);
+            txtInferior.Text = txtIn;
+            txtSuperior.Text=txtSu;
+            label1.Visible = false;
+            label2.Visible = false;
+            txtInferior.Visible = txtI;
+            txtSuperior.Visible = txtS;
+            string cos = btnCos.Text, sen = btnSen.Text, tan = btnTan.Text;
+            metodoDeOperaciones.ParentesisT(ref cos, ref sen, ref tan);
+            btnCos.Text = cos;
+            btnSen.Text = sen;
+            btnTan.Text = tan;
+            btnVariable.Visible = false;
+            btnParentesis.Visible = false;
             rtbOperacion.Text = string.Empty;
             txtView.Text = "0";
         }
@@ -88,17 +112,17 @@ namespace CalculadoraApp.Formularios
         }
         private void ClickOperaciones(object sender, EventArgs e)
         {
-            /*try
-            {*/
+            try
+            {
                 var button = (Button)sender;
                 string txt = txtView.Text, rtb = rtbOperacion.Text;
                 metodoDeOperaciones.Operaciones(ref txt, ref rtb, button.Tag.ToString(),txtInferior.Text);
                 txtView.Text = txt;
                 rtbOperacion.Text = rtb;
-            /*}catch(Exception ex)
+            }catch(Exception ex)
             {
                 MessageBox.Show(ex.Message,"",MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }*/
+            }
         }
         private void ClickTrigonometria(object sender, EventArgs e)
         {
@@ -156,6 +180,13 @@ namespace CalculadoraApp.Formularios
             txtInferior.Visible = true;
             txtSuperior.Visible = true;
             rtbOperacion.Text = button.Text;
+            string cos = btnCos.Text, sen = btnSen.Text, tan = btnTan.Text;
+            metodoDeOperaciones.ParentesisT(ref cos,ref sen,ref tan);
+            btnCos.Text = cos;
+            btnSen.Text = sen;
+            btnTan.Text = tan;
+            btnVariable.Visible = true;
+            btnParentesis.Visible = true;
         }
         private void btnParentesis_Click(object sender, EventArgs e)
         {
@@ -169,9 +200,11 @@ namespace CalculadoraApp.Formularios
 
         private void btnVariable_Click(object sender, EventArgs e)
         {
-           // string rtb = rtbOperacion.Text;
+            // string rtb = rtbOperacion.Text;
             //metodoDeOperaciones.Variable(rtb, txtInferior.Text);
-            rtbOperacion.Text += "X";
+            string rtb = rtbOperacion.Text;
+            metodoDeOperaciones.EscribirVariab(ref rtb);
+            rtbOperacion.Text = rtb;
         }  
         private void btnAbrirP_Click(object sender, EventArgs e)
         {

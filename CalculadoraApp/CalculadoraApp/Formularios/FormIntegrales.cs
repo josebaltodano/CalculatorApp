@@ -64,6 +64,11 @@ namespace CalculadoraApp.Formularios
                         else
                         {
                             fx = fx + a[j] * Math.Pow(x, j);
+                            /*if (j == 2)
+                            {
+                                double b= a[j];
+                                j = j;
+                            }*/
                         }
                     }
                 }

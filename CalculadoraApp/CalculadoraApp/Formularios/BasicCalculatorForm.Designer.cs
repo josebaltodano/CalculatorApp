@@ -77,7 +77,6 @@ namespace CalculadoraApp.Formularios
             this.label1 = new System.Windows.Forms.Label();
             this.btnParentesis = new System.Windows.Forms.Button();
             this.btnVariable = new System.Windows.Forms.Button();
-            this.btnAbrirP = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtView
@@ -343,7 +342,7 @@ namespace CalculadoraApp.Formularios
             this.btnRestar.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnRestar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRestar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRestar.Location = new System.Drawing.Point(322, 281);
+            this.btnRestar.Location = new System.Drawing.Point(322, 283);
             this.btnRestar.Name = "btnRestar";
             this.btnRestar.Size = new System.Drawing.Size(56, 45);
             this.btnRestar.TabIndex = 23;
@@ -428,7 +427,7 @@ namespace CalculadoraApp.Formularios
             this.btnSen.Size = new System.Drawing.Size(56, 45);
             this.btnSen.TabIndex = 29;
             this.btnSen.Tag = "sen";
-            this.btnSen.Text = "Sen(";
+            this.btnSen.Text = "Sen";
             this.btnSen.UseVisualStyleBackColor = false;
             this.btnSen.Click += new System.EventHandler(this.ClickTrigonometria);
             // 
@@ -456,7 +455,7 @@ namespace CalculadoraApp.Formularios
             this.btnCos.Size = new System.Drawing.Size(56, 45);
             this.btnCos.TabIndex = 31;
             this.btnCos.Tag = "cos";
-            this.btnCos.Text = "Cos(";
+            this.btnCos.Text = "Cos";
             this.btnCos.UseVisualStyleBackColor = false;
             this.btnCos.Click += new System.EventHandler(this.ClickTrigonometria);
             // 
@@ -534,7 +533,7 @@ namespace CalculadoraApp.Formularios
             this.btnTanh.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnTanh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTanh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTanh.Location = new System.Drawing.Point(260, 283);
+            this.btnTanh.Location = new System.Drawing.Point(260, 281);
             this.btnTanh.Name = "btnTanh";
             this.btnTanh.Size = new System.Drawing.Size(56, 45);
             this.btnTanh.TabIndex = 37;
@@ -548,12 +547,12 @@ namespace CalculadoraApp.Formularios
             this.btnTan.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnTan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTan.Location = new System.Drawing.Point(198, 282);
+            this.btnTan.Location = new System.Drawing.Point(198, 283);
             this.btnTan.Name = "btnTan";
             this.btnTan.Size = new System.Drawing.Size(56, 45);
             this.btnTan.TabIndex = 38;
             this.btnTan.Tag = "tan";
-            this.btnTan.Text = "Tan(";
+            this.btnTan.Text = "Tan";
             this.btnTan.UseVisualStyleBackColor = false;
             this.btnTan.Click += new System.EventHandler(this.ClickTrigonometria);
             // 
@@ -670,6 +669,7 @@ namespace CalculadoraApp.Formularios
             this.btnParentesis.Tag = ")";
             this.btnParentesis.Text = ")";
             this.btnParentesis.UseVisualStyleBackColor = false;
+            this.btnParentesis.Visible = false;
             this.btnParentesis.Click += new System.EventHandler(this.btnParentesis_Click);
             // 
             // btnVariable
@@ -677,28 +677,15 @@ namespace CalculadoraApp.Formularios
             this.btnVariable.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnVariable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVariable.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVariable.Location = new System.Drawing.Point(384, 281);
+            this.btnVariable.Location = new System.Drawing.Point(383, 229);
             this.btnVariable.Name = "btnVariable";
             this.btnVariable.Size = new System.Drawing.Size(56, 45);
             this.btnVariable.TabIndex = 61;
             this.btnVariable.Tag = "x";
             this.btnVariable.Text = "X";
             this.btnVariable.UseVisualStyleBackColor = false;
+            this.btnVariable.Visible = false;
             this.btnVariable.Click += new System.EventHandler(this.btnVariable_Click);
-            // 
-            // btnAbrirP
-            // 
-            this.btnAbrirP.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnAbrirP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAbrirP.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAbrirP.Location = new System.Drawing.Point(383, 229);
-            this.btnAbrirP.Name = "btnAbrirP";
-            this.btnAbrirP.Size = new System.Drawing.Size(56, 45);
-            this.btnAbrirP.TabIndex = 62;
-            this.btnAbrirP.Tag = "(";
-            this.btnAbrirP.Text = "(";
-            this.btnAbrirP.UseVisualStyleBackColor = false;
-            this.btnAbrirP.Click += new System.EventHandler(this.btnAbrirP_Click);
             // 
             // BasicCalculatorForm
             // 
@@ -706,7 +693,6 @@ namespace CalculadoraApp.Formularios
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.ClientSize = new System.Drawing.Size(451, 440);
-            this.Controls.Add(this.btnAbrirP);
             this.Controls.Add(this.btnVariable);
             this.Controls.Add(this.btnParentesis);
             this.Controls.Add(this.label1);
@@ -814,6 +800,5 @@ namespace CalculadoraApp.Formularios
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnParentesis;
         private System.Windows.Forms.Button btnVariable;
-        private System.Windows.Forms.Button btnAbrirP;
     }
 }

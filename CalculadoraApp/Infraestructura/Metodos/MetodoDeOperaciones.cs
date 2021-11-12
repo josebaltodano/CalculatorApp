@@ -436,15 +436,43 @@ namespace Infraestructura.Metodos
             {
                 if (rtb.IndexOf("(") < 0)
                 {
+                    
                     ObtenerNume(rtb);
                     rtb += txt;
-                    NPolin.Add(double.Parse(txt));
+                    if (verificar != "^")
+                    {
+                        NPolin.Add(double.Parse(txt));
+                    }
                     txt = IntegralesPolin(NPolin, GradoPolin(rtb), double.Parse(txtI), double.Parse(txtS)).ToString();
+                    Guardarnum(double.Parse(txt));
+                    rtb = txt;
+                    NPolin = new List<double>();
+                    variables = new List<CantidadVariable>();
+                    Trig = null;
+                    Simb = new List<char>();
+                    NP = 0;
+                    cerrarP = new List<int>();
+                    abrirP = new List<int>();
+                    Limit = 0;
+                    a = 0;
+                    fun = 'v';
+
                 }
                 else
                 {
                     txt = Integral(fun, double.Parse(txtI), double.Parse(txtS)).ToString();
                     Guardarnum(double.Parse(txt));
+                    rtb = txt;
+                    NPolin = new List<double>();
+                    variables = new List<CantidadVariable>();
+                    Trig = null;
+                    Simb = new List<char>();
+                    NP = 0;
+                    cerrarP = new List<int>();
+                    abrirP = new List<int>();
+                    Limit = 0;
+                    a = 0;
+                    fun = 'v';
                 }
 
             }
@@ -530,25 +558,44 @@ namespace Infraestructura.Metodos
         {
             int poten = rtb.IndexOf("^");
             int posit = rtb.IndexOf("+");
-            int num = 0;
-            if (posit>0&&poten>0) {
-                num = int.Parse(rtb.Substring(poten+1, posit-(poten+1)));
-            }
-            int GradoT = 0;
-            for (int i = 0;i<rtb.Length-1;i++)
+            string verificar = rtb.Substring(poten+1);
+            if (posit > 0||double.TryParse(verificar, out double h))
             {
-                if (num > GradoT)
+                int num = 0;
+                int GradoT = 0;
+                if (posit > 0 && poten > 0)
                 {
-                    GradoT = num;
-                    poten = rtb.IndexOf("^",posit);
-                    posit = rtb.IndexOf("+",posit+1);
-                    if (posit > 0 && poten > 0)
+                    num = int.Parse(rtb.Substring(poten + 1, posit - (poten + 1)));
+                }
+                else
+                if (posit < 0)
+                {
+                    GradoT = int.Parse(rtb.Substring(poten + 1));
+                }
+                for (int i = 0; i < rtb.Length - 1; i++)
+                {
+                    if (num > GradoT)
                     {
-                        num = int.Parse(rtb.Substring(poten+1, posit - (poten + 1)));
+                        GradoT = num;
+                        poten = rtb.IndexOf("^", posit);
+                        posit = rtb.IndexOf("+", posit + 1);
+                        if (posit > 0 && poten > 0)
+                        {
+                            num = int.Parse(rtb.Substring(poten + 1, posit - (poten + 1)));
+                        }
                     }
                 }
+                return GradoT;
             }
-            return GradoT;
+            else
+            {
+                return int.MaxValue;
+            }
+        }
+        List<char> SignosT = new List<char>();
+        public void ValidarPoten(ref string rtb)
+        {
+           // if(rtb.Substring)
         }
         public void Operaciones(ref string txt, ref string rtb, string button, string txtI)
         {
@@ -595,6 +642,10 @@ namespace Infraestructura.Metodos
                     }
                     else if(verificar=="^")
                     {
+                        if (GradoPolin(rtb) <= double.Parse(txt))
+                        {
+                            throw new ArgumentException("Favor de escribir el polinomio en orden: aX^n + bX^n-1 + cX^n-2 + ...");
+                        }
                         rtb += txt+button;
                         txt = "0";
                     }else
@@ -612,10 +663,14 @@ namespace Infraestructura.Metodos
                     GuardarnumInteg(txt, button, rtb);
 
                 }
-                else //if(verificar ==")")
+                else 
                 {
                     rtb += button;
-                    if (rtb.Substring(rtb.Length - 1) != "X")
+                    if (verificar == ")")
+                    {
+                        SignosT.Add(char.Parse(button));
+                    }else
+                    if (rtb.Substring(rtb.Length - 1) != "X"&&button!= "√")
                     {
                         Variable(rtb, txtI);
                     }
@@ -699,7 +754,24 @@ namespace Infraestructura.Metodos
                 txt += button;
             }
         }
-        public void Reiniciar()
+        public void ParentesisT(ref string cos,ref string sen, ref string tan)
+        {
+            string verificar = cos.Substring(cos.Length - 1);
+            if (verificar=="(")
+            {
+                cos = cos.Substring(0,3);
+                sen = sen.Substring(0,3);
+                tan = tan.Substring(0,3);
+            }
+            else
+            {
+                cos += "(";
+                sen += "(";
+                tan += "(";
+
+            }
+        }
+        public void Reiniciar(ref string txtIn, ref string txtSu, ref bool txtI, ref bool txtS)
         {
             operadorT = "";
             operador = 'v';
@@ -709,6 +781,18 @@ namespace Infraestructura.Metodos
             a = 0;
             numero1 = 0;
             numero2 = 0;
+            NPolin = new List<double>();
+            variables = new List<CantidadVariable>();
+            Trig = "";
+            Simb = new List<char>();
+            NP=0;
+            cerrarP = new List<int>();
+            abrirP = new List<int>();
+            Limit = 0;
+            txtIn = string.Empty;
+            txtSu = string.Empty;
+            txtI = false;
+            txtS = false;
         }
         //*******Metodo de integrales********
         int N = 2000;
@@ -801,45 +885,124 @@ namespace Infraestructura.Metodos
                         if (l != 0)
                         {
                             np = np + 1;
+                            for (int i = 0; i < N; i++)
+                            {
+                                if (SignosT[l - 1] == '*')
+                                {
+                                    fx[i] = fx[i] * Math.Cos(b);
+                                }
+                                else if (SignosT[l - 1] == '÷')
+                                {
+                                    fx[i] = fx[i] / Math.Cos(b);
+                                }
+                                else if (SignosT[l - 1] == '+')
+                                {
+                                    fx[i] = fx[i] + Math.Cos(b);
+                                }
+                                else if (SignosT[l - 1] == '-')
+                                {
+                                    fx[i] = fx[i] - Math.Cos(b);
+                                }
+                                else if (SignosT[l - 1] == '^')
+                                {
+                                    fx[i] = Math.Pow(fx[i],Math.Cos(b));
+                                }
+                                    b = OperarDentroParen(limI, limS, np);
+
+                            }
                         }
-                        for (int i = 0; i < N; i++)
+                        else
                         {
-
-                            if (i == 0)
+                            for (int i = 0; i < N; i++)
                             {
-                                fx[i] = fx[i] * Math.Cos(b);
+                                if (i == 0)
+                                {
+                                    fx[i] = fx[i] * Math.Cos(b);
+                                }
+                                else
+                                {
+                                    fx[i] = fx[i] * Math.Cos(b);
+                                }
+                                b = OperarDentroParen(limI, limS, np);
                             }
-                            else
-                            {
-                                fx[i] = fx[i] * Math.Cos(b);
-                            }
-                            b = OperarDentroParen(limI, limS, np);
-
                         }
                         break;
                     case 't':
                         if (l != 0)
                         {
                             np = np + 1;
+                            for (int i = 0; i < N; i++)
+                            {
+                                if (SignosT[l - 1] == '*')
+                                {
+                                    fx[i] = fx[i] * Math.Tan(b);
+                                }
+                                else if (SignosT[l - 1] == '÷')
+                                {
+                                    fx[i] = fx[i] / Math.Tan(b);
+                                }
+                                else if (SignosT[l - 1] == '+')
+                                {
+                                    fx[i] = fx[i] + Math.Tan(b);
+                                }
+                                else if (SignosT[l - 1] == '-')
+                                {
+                                    fx[i] = fx[i] - Math.Tan(b);
+                                }
+                                else if (SignosT[l - 1] == '^')
+                                {
+                                    fx[i] = Math.Pow(fx[i], Math.Tan(b));
+                                }
+                                b = OperarDentroParen(limI, limS, np);
+
+                            }
                         }
-                        for (int i = 0; i < N; i++)
+                        else
                         {
-                            if (i == 0)
+                            for (int i = 0; i < N; i++)
                             {
-                                fx[i] = fx[i] * Math.Tan(b);
+                                if (i == 0)
+                                {
+                                    fx[i] = fx[i] * Math.Tan(b);
+                                }
+                                else
+                                {
+                                    fx[i] = fx[i] * Math.Tan(b);
+                                }
+
+                                b = OperarDentroParen(limI, limS, np);
                             }
-                            else
-                            {
-                                fx[i] = fx[i] * Math.Tan(b);
-                            }
-                            
-                            b = OperarDentroParen(limI, limS, np);
                         }
                         break;
                     case 's':
                         if (l != 0)
                         {
                             np = np + 1;
+                            for (int i = 0; i < N; i++)
+                            {
+                                if (SignosT[l - 1] == '*')
+                                {
+                                    fx[i] = fx[i] * Math.Sin(b);
+                                }
+                                else if (SignosT[l - 1] == '÷')
+                                {
+                                    fx[i] = fx[i] / Math.Sin(b);
+                                }
+                                else if (SignosT[l - 1] == '+')
+                                {
+                                    fx[i] = fx[i] + Math.Sin(b);
+                                }
+                                else if (SignosT[l - 1] == '-')
+                                {
+                                    fx[i] = fx[i] - Math.Sin(b);
+                                }
+                                else if (SignosT[l - 1] == '^')
+                                {
+                                    fx[i] = Math.Pow(fx[i], Math.Sin(b));
+                                }
+                                b = OperarDentroParen(limI, limS, np);
+
+                            }
                         }
                         for (int i = 0; i < N; i++)
                         {
@@ -879,6 +1042,10 @@ namespace Infraestructura.Metodos
             }
             double Total = 0;
             double a2 = a1 / 3;
+            for (int i=0;i<fx.Length;i++)
+            {
+                Total += fx[i];
+            }
             return a1 * Total;
         }
 
@@ -895,13 +1062,12 @@ namespace Infraestructura.Metodos
         {
             //  throw new ArgumentException($"cerrarP {cerrarP.Count},variables {variables.Count}");
             double Aumentar = 0;
-            Aumentar = (Superior - Inferior) / N;
+            Aumentar = (Superior - Inferior) / (N-1);
             //throw new ArgumentException(""+Aumentar+"  "+Limit);
             double GuardarN = 0;
             double GuardarS = 0;
             int s = 0;
             List<double> Valordentro = new List<double>();
-
             for (int i = 0; i < variables.Count; i++)
             {
 
@@ -919,14 +1085,22 @@ namespace Infraestructura.Metodos
                     if (variables[i].signoAdelante == '^')
                     {
                         variables[i].Valor = Math.Pow(variables[i].Valor, variables[i + 1].Valor);
-                        variables.Remove(variables[i + 1]);
+                        //variables.Remove(variables[i + 1]);
                     }
+                    if (variables[i].signoDetras == '^')
+                    {
+
+                    }else
                     if (variables[i].signoDetras == '√')
                     {
                         variables[i].Valor = Math.Sqrt(variables[i].Valor);
                         if (i != 0)
                         {
                             variables[i].signoDetras = variables[i - 1].signoAdelante;
+                        }
+                        else
+                        {
+                            variables[i].signoDetras ='(';
                         }
                     }
                     if (i == 0)
@@ -942,7 +1116,7 @@ namespace Infraestructura.Metodos
                     {
                         GuardarN = GuardarN - variables[i].Valor;
                     }
-                    else if (variables[i].signoDetras == '/')
+                    else if (variables[i].signoDetras == '÷')
                     {
                         GuardarN = GuardarN / variables[i].Valor;
                     }
@@ -955,7 +1129,7 @@ namespace Infraestructura.Metodos
                 }
                
             }
-            if (GuardarN >= Superior-0.5)
+            if (Limit >= Superior)//-0.5)
             {
                 for (int i = 0; i < s; i++)
                 {
@@ -963,24 +1137,53 @@ namespace Infraestructura.Metodos
                     
                 }
             }
-            /*if (GuardarN>=7)
-            {
-                np = np;
-            }*/
             s = 0;
             Limit += Aumentar;
             return GuardarN;
+        }
+        public void EscribirVariab(ref string rtb)
+        {
+            string verificar = rtb.Substring(rtb.Length - 1);
+            if (rtb.IndexOf("(")<0)
+            {
+                if (verificar != "*")
+                {
+                    rtb += "1*" + "X";
+                    //NPolin.Add(1);
+                }
+                else
+                {
+                    rtb += "X";
+                }
+            }
+            else
+            {
+                rtb += "X";
+            }
         }
         public double IntegralesPolin(List<double> a, int n, double limitInf, double limitSup)
         {
             double fx;
             double suma = 0, x = limitInf;
             int c;
-            a.Reverse();
-            /*if ((limitSup + limitInf) == 0)
+            if (a.Count < n)
             {
-                return 0;
-            }*/
+                double num = 0;
+                if (a.Count != 1)
+                {
+                   num = a[a.Count-1];
+                    a.RemoveAt(a.Count-1);
+                }
+                for(int i = 0; i <= n; i++)
+                {
+                    if (i >= a.Count)
+                    {
+                        a.Add(0);
+                    }
+                }
+                a[a.Count - 1] = num;
+            }
+            a.Reverse();
             for (int i = 0; i <= N; i++)
             {
                 fx = 0;
@@ -999,6 +1202,11 @@ namespace Infraestructura.Metodos
                         else
                         {
                             fx = fx + a[j] * Math.Pow(x, j);
+                            /*if (a[j] == 1)
+                            {
+                                double b = a[2];
+                                j = j;
+                            }*/
                         }
                     }
                 }
@@ -1035,27 +1243,29 @@ namespace Infraestructura.Metodos
             double GradoT = 0;
             for (int i = 0; i < rtb.Length - 1; i++)
             {
-                if (num > GradoT)
-                {
-                    GradoT = num;
-                    NPolin.Add(GradoT);
-                    posit = rtb.IndexOf("+", mult);
-                    neg = rtb.IndexOf("-",mult);
-                    mult = rtb.IndexOf("*", mult + 1);
-
                     if (mult > 0)
                     {
-                        if (neg < posit && neg > 0)
+                        GradoT = num;
+                        NPolin.Add(GradoT);
+                        posit = rtb.IndexOf("+", mult);
+                        neg = rtb.IndexOf("-", mult);
+                        mult = rtb.IndexOf("*", mult + 1);
+
+                        if (mult > 0)
                         {
-                            num = int.Parse(rtb.Substring(neg, mult - (neg + 1)));
-                        }
-                        else if(posit>0)
-                        {
-                            num = int.Parse(rtb.Substring(posit + 1, mult - (posit + 1)));
+                            if (neg < posit && neg > 0)
+                            {
+                                num = int.Parse(rtb.Substring(neg, mult - (neg + 1)));
+                            }
+                            else if (posit > 0)
+                            {
+                                num = int.Parse(rtb.Substring(posit + 1, mult - (posit + 1)));
+                            }
                         }
                     }
-                }
+                
             }
+            int h = NPolin.Count;
         }
         public char Signos(string cont, char direcc)
         {
@@ -1063,7 +1273,7 @@ namespace Infraestructura.Metodos
             if (direcc == 'a')
             {
 
-                ch = char.Parse(cont.Substring(posici, 1));
+                ch = char.Parse(cont.Substring(posici+1, 1));
 
             }
             else
