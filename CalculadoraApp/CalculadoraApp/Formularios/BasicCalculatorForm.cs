@@ -14,9 +14,11 @@ namespace CalculadoraApp.Formularios
     public partial class BasicCalculatorForm : Form
     {
         MetodoDeOperaciones metodoDeOperaciones;
+        IntegralesModel integrales;
         public BasicCalculatorForm()
         {
             metodoDeOperaciones = new MetodoDeOperaciones();
+            integrales = new IntegralesModel(metodoDeOperaciones);
             InitializeComponent();
         }
         private void ViewNumber(object sender, EventArgs e)
@@ -51,13 +53,19 @@ namespace CalculadoraApp.Formularios
         }
         private void btnIgual_Click(object sender, EventArgs e)
         {
-            /*try
-            {*/
-                metodoDeOperaciones.Verificar(txtInferior.Text, txtSuperior.Text, rtbOperacion.Text);
+            try
+            {
+                integrales.Verificar(txtInferior.Text, txtSuperior.Text, rtbOperacion.Text);
                 string txt = txtView.Text, rtb = rtbOperacion.Text;
-                metodoDeOperaciones.Igual(ref txt, ref rtb, txtInferior.Text, txtSuperior.Text);
+            if (rtbOperacion.Text.IndexOf("∫") <0) {
+                metodoDeOperaciones.Igual(ref txt, ref rtb);
+            }
+            else
+            {
+                integrales.Igual(ref txt, ref rtb, txtInferior.Text, txtSuperior.Text);
+            }
                 string cos = btnCos.Text, sen = btnSen.Text, tan = btnTan.Text;
-                metodoDeOperaciones.ParentesisT(ref cos, ref sen, ref tan);
+                metodoDeOperaciones.ParentesisT(ref cos, ref sen, ref tan, rtbOperacion.Text);
                 btnCos.Text = cos;
                 btnSen.Text = sen;
                 btnTan.Text = tan;
@@ -67,11 +75,11 @@ namespace CalculadoraApp.Formularios
                 label2.Visible = false;
                 txtInferior.Visible = false;
                 txtSuperior.Visible = false;
-            /*}
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }*/
+            }
         }
 
         private void btnQuitar_Click(object sender, EventArgs e)
@@ -85,7 +93,8 @@ namespace CalculadoraApp.Formularios
         {
             string txtIn = txtInferior.Text, txtSu = txtSuperior.Text;
             bool txtI = txtInferior.Visible, txtS = txtSuperior.Visible;
-            metodoDeOperaciones.Reiniciar(ref txtIn,ref txtSu,ref txtI,ref txtS);
+            integrales.Reiniciar(ref txtIn,ref txtSu,ref txtI,ref txtS);
+            metodoDeOperaciones.Reiniciar();
             txtInferior.Text = txtIn;
             txtSuperior.Text=txtSu;
             label1.Visible = false;
@@ -93,7 +102,7 @@ namespace CalculadoraApp.Formularios
             txtInferior.Visible = txtI;
             txtSuperior.Visible = txtS;
             string cos = btnCos.Text, sen = btnSen.Text, tan = btnTan.Text;
-            metodoDeOperaciones.ParentesisT(ref cos, ref sen, ref tan);
+            metodoDeOperaciones.ParentesisT(ref cos, ref sen, ref tan,rtbOperacion.Text);
             btnCos.Text = cos;
             btnSen.Text = sen;
             btnTan.Text = tan;
@@ -116,7 +125,14 @@ namespace CalculadoraApp.Formularios
             {
                 var button = (Button)sender;
                 string txt = txtView.Text, rtb = rtbOperacion.Text;
-                metodoDeOperaciones.Operaciones(ref txt, ref rtb, button.Tag.ToString(),txtInferior.Text);
+                if (rtbOperacion.Text.IndexOf("∫") < 0)
+                {
+                    metodoDeOperaciones.Operaciones(ref txt, ref rtb, button.Tag.ToString(), txtInferior.Text);
+                }
+                else
+                {
+                    integrales.Operaciones(ref txt, ref rtb, button.Tag.ToString(), txtInferior.Text);
+                }
                 txtView.Text = txt;
                 rtbOperacion.Text = rtb;
             }catch(Exception ex)
@@ -128,10 +144,17 @@ namespace CalculadoraApp.Formularios
         {
             try
             {
-                metodoDeOperaciones.ObtenerSimb(rtbOperacion.Text);
+                integrales.ObtenerSimb(rtbOperacion.Text);
                 var button = (Button)sender;
                 string txt = txtView.Text, rtb = rtbOperacion.Text;
-                metodoDeOperaciones.OperacionesCien(ref txt, ref rtb, button.Text.ToString());
+                if (rtbOperacion.Text.IndexOf("∫") < 0)
+                {
+                    metodoDeOperaciones.OperacionesCien(ref txt, ref rtb, button.Text.ToString());
+                }
+                else
+                {
+                    integrales.OperacionesCien(ref txt, ref rtb, button.Text.ToString());
+                }
                 txtView.Text = txt;
                 rtbOperacion.Text = rtb;
             }
@@ -181,7 +204,8 @@ namespace CalculadoraApp.Formularios
             txtSuperior.Visible = true;
             rtbOperacion.Text = button.Text;
             string cos = btnCos.Text, sen = btnSen.Text, tan = btnTan.Text;
-            metodoDeOperaciones.ParentesisT(ref cos,ref sen,ref tan);
+            txtView.Text = "0";
+            metodoDeOperaciones.ParentesisT(ref cos,ref sen,ref tan,rtbOperacion.Text);
             btnCos.Text = cos;
             btnSen.Text = sen;
             btnTan.Text = tan;
@@ -193,18 +217,24 @@ namespace CalculadoraApp.Formularios
             string rtb= rtbOperacion.Text;
             string txtI = txtInferior.Text;
             string txt = txtView.Text;
-            metodoDeOperaciones.AddC(ref rtb ,txtI,ref txt);
+            integrales.AddC(ref rtb ,txtI,ref txt);
             rtbOperacion.Text = rtb;
             txtView.Text = txt;
         }
 
         private void btnVariable_Click(object sender, EventArgs e)
         {
-            // string rtb = rtbOperacion.Text;
-            //metodoDeOperaciones.Variable(rtb, txtInferior.Text);
-            string rtb = rtbOperacion.Text;
-            metodoDeOperaciones.EscribirVariab(ref rtb);
-            rtbOperacion.Text = rtb;
+            try
+            {
+                // string rtb = rtbOperacion.Text;
+                //metodoDeOperaciones.Variable(rtb, txtInferior.Text);
+                string rtb = rtbOperacion.Text;
+                integrales.EscribirVariab(ref rtb);
+                rtbOperacion.Text = rtb;
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }  
         private void btnAbrirP_Click(object sender, EventArgs e)
         {
@@ -215,9 +245,25 @@ namespace CalculadoraApp.Formularios
             string verificar = rtbOperacion.Text.Substring(rtbOperacion.Text.Length - 1);
             if (verificar != "(")
             {
-                metodoDeOperaciones.AddA(rtbOperacion.Text.Length - 1);
+                integrales.AddA(rtbOperacion.Text.Length - 1);
                 rtbOperacion.Text += "(";
             }
+        }
+
+        private void btnGraficarArea_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GraphicsForm graphics = new GraphicsForm(integrales.ValorX, integrales.ValorY, double.Parse(txtInferior.Text), double.Parse(txtSuperior.Text), double.Parse(txtView.Text));
+                graphics.ShowDialog();
+                integrales.ValorX = new List<double>();
+                integrales.ValorY = new List<double>();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
     

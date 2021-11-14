@@ -77,6 +77,7 @@ namespace CalculadoraApp.Formularios
             this.label1 = new System.Windows.Forms.Label();
             this.btnParentesis = new System.Windows.Forms.Button();
             this.btnVariable = new System.Windows.Forms.Button();
+            this.btnGraficarArea = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtView
@@ -687,12 +688,27 @@ namespace CalculadoraApp.Formularios
             this.btnVariable.Visible = false;
             this.btnVariable.Click += new System.EventHandler(this.btnVariable_Click);
             // 
+            // btnGraficarArea
+            // 
+            this.btnGraficarArea.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnGraficarArea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGraficarArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGraficarArea.Location = new System.Drawing.Point(384, 383);
+            this.btnGraficarArea.Name = "btnGraficarArea";
+            this.btnGraficarArea.Size = new System.Drawing.Size(55, 45);
+            this.btnGraficarArea.TabIndex = 62;
+            this.btnGraficarArea.Tag = "x";
+            this.btnGraficarArea.Text = "Graficar Area";
+            this.btnGraficarArea.UseVisualStyleBackColor = false;
+            this.btnGraficarArea.Click += new System.EventHandler(this.btnGraficarArea_Click);
+            // 
             // BasicCalculatorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.ClientSize = new System.Drawing.Size(451, 440);
+            this.Controls.Add(this.btnGraficarArea);
             this.Controls.Add(this.btnVariable);
             this.Controls.Add(this.btnParentesis);
             this.Controls.Add(this.label1);
@@ -800,5 +816,6 @@ namespace CalculadoraApp.Formularios
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnParentesis;
         private System.Windows.Forms.Button btnVariable;
+        private System.Windows.Forms.Button btnGraficarArea;
     }
 }
