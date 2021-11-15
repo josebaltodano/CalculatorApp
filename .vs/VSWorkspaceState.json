@@ -4,9 +4,11 @@
     "\\CalculadoraApp",
     "\\CalculadoraApp\\CalculadoraApp",
     "\\CalculadoraApp\\CalculadoraApp\\Formularios",
+    "\\CalculadoraApp\\Domain",
+    "\\CalculadoraApp\\Domain\\Interfaces",
     "\\CalculadoraApp\\Infraestructura",
     "\\CalculadoraApp\\Infraestructura\\Metodos"
   ],
-  "SelectedNode": "\\CalculadoraApp\\CalculadoraApp\\Formularios\\GraphicsForm.cs",
+  "SelectedNode": "\\CalculadoraApp\\CalculadoraApp\\Program.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -17,3 +17,22 @@ C:\Users\Usuario\Desktop\Tarea de Curso\CalculadoraApp\Domain\obj\Debug\netstand
 C:\Users\Usuario\Desktop\Tarea de Curso\CalculadoraApp\Domain\obj\Debug\netstandard2.0\Domain.csproj.CoreCompileInputs.cache
 C:\Users\Usuario\Desktop\Tarea de Curso\CalculadoraApp\Domain\obj\Debug\netstandard2.0\Domain.dll
 C:\Users\Usuario\Desktop\Tarea de Curso\CalculadoraApp\Domain\obj\Debug\netstandard2.0\Domain.pdb
+C:\Users\Cristina\OneDrive\Escritorio\tarea de curso\CalculatorApp\CalculadoraApp\Domain\bin\Debug\netstandard2.0\Domain.deps.json
+C:\Users\Cristina\OneDrive\Escritorio\tarea de curso\CalculatorApp\CalculadoraApp\Domain\bin\Debug\netstandard2.0\Domain.dll
+C:\Users\Cristina\OneDrive\Escritorio\tarea de curso\CalculatorApp\CalculadoraApp\Domain\bin\Debug\netstandard2.0\Domain.pdb
+C:\Users\Cristina\OneDrive\Escritorio\tarea de curso\CalculatorApp\CalculadoraApp\Domain\obj\Debug\netstandard2.0\Domain.csproj.AssemblyReference.cache
+C:\Users\Cristina\OneDrive\Escritorio\tarea de curso\CalculatorApp\CalculadoraApp\Domain\obj\Debug\netstandard2.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Cristina\OneDrive\Escritorio\tarea de curso\CalculatorApp\CalculadoraApp\Domain\obj\Debug\netstandard2.0\Domain.AssemblyInfoInputs.cache
+C:\Users\Cristina\OneDrive\Escritorio\tarea de curso\CalculatorApp\CalculadoraApp\Domain\obj\Debug\netstandard2.0\Domain.AssemblyInfo.cs
+C:\Users\Cristina\OneDrive\Escritorio\tarea de curso\CalculatorApp\CalculadoraApp\Domain\obj\Debug\netstandard2.0\Domain.csproj.CoreCompileInputs.cache
+C:\Users\Cristina\OneDrive\Escritorio\tarea de curso\CalculatorApp\CalculadoraApp\Domain\obj\Debug\netstandard2.0\Domain.dll
+C:\Users\Cristina\OneDrive\Escritorio\tarea de curso\CalculatorApp\CalculadoraApp\Domain\obj\Debug\netstandard2.0\Domain.pdb
+C:\Users\Usuario\Desktop\CalculatorApp\CalculadoraApp\Domain\bin\Debug\netstandard2.0\Domain.deps.json
+C:\Users\Usuario\Desktop\CalculatorApp\CalculadoraApp\Domain\bin\Debug\netstandard2.0\Domain.dll
+C:\Users\Usuario\Desktop\CalculatorApp\CalculadoraApp\Domain\bin\Debug\netstandard2.0\Domain.pdb
+C:\Users\Usuario\Desktop\CalculatorApp\CalculadoraApp\Domain\obj\Debug\netstandard2.0\Domain.csproj.AssemblyReference.cache
+C:\Users\Usuario\Desktop\CalculatorApp\CalculadoraApp\Domain\obj\Debug\netstandard2.0\Domain.AssemblyInfoInputs.cache
+C:\Users\Usuario\Desktop\CalculatorApp\CalculadoraApp\Domain\obj\Debug\netstandard2.0\Domain.AssemblyInfo.cs
+C:\Users\Usuario\Desktop\CalculatorApp\CalculadoraApp\Domain\obj\Debug\netstandard2.0\Domain.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\CalculatorApp\CalculadoraApp\Domain\obj\Debug\netstandard2.0\Domain.dll
+C:\Users\Usuario\Desktop\CalculatorApp\CalculadoraApp\Domain\obj\Debug\netstandard2.0\Domain.pdb

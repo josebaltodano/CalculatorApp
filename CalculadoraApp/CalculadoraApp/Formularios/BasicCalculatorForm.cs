@@ -1,4 +1,5 @@
-﻿using Infraestructura.Metodos;
+﻿using AppCore.Interfaces;
+using Infraestructura.Metodos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,12 +14,13 @@ namespace CalculadoraApp.Formularios
 {
     public partial class BasicCalculatorForm : Form
     {
-        MetodoDeOperaciones metodoDeOperaciones;
-        IntegralesModel integrales;
-        public BasicCalculatorForm()
+        IOperacionesServices metodoDeOperaciones;
+        IIntegralService integrales;
+        public BasicCalculatorForm(IOperacionesServices metodoDeOperaciones ,IIntegralService integrales)
         {
-            metodoDeOperaciones = new MetodoDeOperaciones();
-            integrales = new IntegralesModel(metodoDeOperaciones);
+            this.metodoDeOperaciones = metodoDeOperaciones;
+            this.integrales = integrales;
+           
             InitializeComponent();
         }
         private void ViewNumber(object sender, EventArgs e)
@@ -113,8 +115,9 @@ namespace CalculadoraApp.Formularios
         }
         private void btnBorrar_Click(object sender, EventArgs e)
         {
+            //TODO: aqui se hizo un cambio
             txtView.Text = "0";
-            if (metodoDeOperaciones.operador == 'v')
+            if (metodoDeOperaciones.GetOperador() == 'v')
             {
                 rtbOperacion.Text = string.Empty;
             }
@@ -254,10 +257,13 @@ namespace CalculadoraApp.Formularios
         {
             try
             {
-                GraphicsForm graphics = new GraphicsForm(integrales.ValorX, integrales.ValorY, double.Parse(txtInferior.Text), double.Parse(txtSuperior.Text), double.Parse(txtView.Text));
+                //TODO: aqui se cambio algo
+                GraphicsForm graphics = new GraphicsForm(integrales.GetValorX(), integrales.GetValorY(), double.Parse(txtInferior.Text), double.Parse(txtSuperior.Text), double.Parse(txtView.Text));
                 graphics.ShowDialog();
-                integrales.ValorX = new List<double>();
-                integrales.ValorY = new List<double>();
+                var valorX = integrales.GetValorX();
+                valorX = new List<double>();
+                var valorY = integrales.GetValorY();
+                valorY = new List<double>();
             }
             catch(Exception ex)
             {

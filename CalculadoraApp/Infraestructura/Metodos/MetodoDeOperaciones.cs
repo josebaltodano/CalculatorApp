@@ -3,10 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Domain.Enums;
+using Domain.Interfaces;
 
 namespace Infraestructura.Metodos
 {
-    public class MetodoDeOperaciones
+    public class MetodoDeOperaciones : IOperaciones
     {
 
         #region MetodosBasicos
@@ -518,6 +519,11 @@ namespace Infraestructura.Metodos
             {
                 return 0;
             }
+        }
+
+        public char GetOperador()
+        {
+            return operador;
         }
         #endregion
     }

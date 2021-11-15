@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using System.Text;
 using Domain.OperacionesBasicas;
 using Domain.Enums;
+using Domain.Interfaces;
 
 namespace Infraestructura.Metodos
 {
-    public class IntegralesModel
+    public class IntegralesModel : IIntegral
     {
         public MetodoDeOperaciones metodo;
-        public IntegralesModel(MetodoDeOperaciones metodoDe)
-        {
-            metodo = metodoDe;
-        }
         
+        public IntegralesModel()
+        {
+            metodo = new MetodoDeOperaciones();
+        }
+
         public int N = 2000;
         public string Trig = "";
         int NP = 0;
@@ -811,6 +813,16 @@ namespace Infraestructura.Metodos
                     }
                 }
             }
+        }
+
+        public List<double> GetValorX()
+        {
+            return ValorX;
+        }
+
+        public List<double> GetValorY()
+        {
+            return ValorY;
         }
     }
 }
