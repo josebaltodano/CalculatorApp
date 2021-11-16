@@ -81,26 +81,44 @@ namespace CalculadoraApp.Formularios
                 }
                 double neg = LimitI - Math.Round(Math.Abs(R));
                 double pos = LimitS + Math.Round(Math.Abs(R));
-                cViewArea.ChartAreas["ChartArea1"].AxisY.Minimum = (neg/2); // Valores del eje Y en los negativos. 
-                cViewArea.ChartAreas["ChartArea1"].AxisY.Maximum = pos/2; // Valores del eje Y en los positivos.
-                cViewArea.ChartAreas["ChartArea1"].AxisX.Minimum = neg/2; // Valores del eje X en los negativos. 
-                cViewArea.ChartAreas["ChartArea1"].AxisX.Maximum = pos / 2; // Valores del eje X en los positivos.
+                if (pos > 10000)
+                {
+                    //throw new ArgumentException("Lo sentimos, no se puede grafica ese area en este momento");
+                    pos = 2000;
+                    neg = -2000;
+
+                }
+                cViewArea.ChartAreas["ChartArea1"].AxisY.Minimum = (neg/2);
+                cViewArea.ChartAreas["ChartArea1"].AxisY.Maximum = pos/2;
+                cViewArea.ChartAreas["ChartArea1"].AxisX.Minimum = neg/2;
+                cViewArea.ChartAreas["ChartArea1"].AxisX.Maximum = pos / 2;
                 CreateEjes();
                // GraficFuncion();
                 GraficArea();
             }
-            catch { }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Close();
+            }
         }
         public void CreateEjes()
         {
             double neg = LimitI - Math.Round(Math.Abs(R));
             double pos = LimitS + Math.Round(Math.Abs(R));
+            if (pos>10000)
+            {
+                pos = 1000;
+                neg = -1000;
+
+            }
             for (double i = neg; i < pos; i++)
             {
-                cViewArea.Series["EjeY"].Color = Color.Blue; // Le doy color al eje
-                cViewArea.Series["EjeX"].Color = Color.Red; // Le doy color al eje
-                cViewArea.Series["EjeY"].Points.AddXY(0, i); // Eje Y (i va a ir variando (0,1),(0,2) )
-                cViewArea.Series["EjeX"].Points.AddXY(i, 0); // Eje X (i va a ir variando (1,0), (2,0) )
+                cViewArea.Series["EjeY"].Color = Color.Blue;
+                cViewArea.Series["EjeX"].Color = Color.Red;
+                cViewArea.Series["EjeY"].Points.AddXY(0, i);
+                cViewArea.Series["EjeX"].Points.AddXY(i, 0);
             }
         }
         public void GraficArea()

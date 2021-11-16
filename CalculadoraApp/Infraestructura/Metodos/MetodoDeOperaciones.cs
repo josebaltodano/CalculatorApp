@@ -5,6 +5,7 @@ using System.Text;
 using Domain.Enums;
 using Domain.Interfaces;
 
+
 namespace Infraestructura.Metodos
 {
     public class MetodoDeOperaciones : IOperaciones
@@ -36,7 +37,6 @@ namespace Infraestructura.Metodos
                 a++;
             }
         }
-        int NP = 0;
         double r = 0;
         public double Resultado()
         {
@@ -148,7 +148,8 @@ namespace Infraestructura.Metodos
                         double n = numero2 * (Math.PI / 180);
                         Guardarnum(Math.Tanh(n));
                         r = Math.Tanh(n);
-                        operadorT = "";                    }
+                        operadorT = "";
+                    }
 
                     break;
             }
@@ -247,16 +248,12 @@ namespace Infraestructura.Metodos
                 {
                     c = "-" + txt;
                     txt = c;
-                    //c = txtOperacion.Text.Substring(0, txtOperacion.Text.Length - 2);
-                    //txtOperacion.Text = c + txtView.Text;
                 }
                 else
                 {
 
                     c = txt.Substring(1);
                     txt = c;
-                    //c = txtOperacion.Text.Substring(0, txtOperacion.Text.Length - 2);
-                    //txtOperacion.Text = c + txtView.Text;
                 }
             }
         }
@@ -457,13 +454,13 @@ namespace Infraestructura.Metodos
         public void ParentesisT(ref string cos,ref string sen, ref string tan,string rtb)
         {
             string verificar = cos.Substring(cos.Length - 1);
-            if (verificar=="(")
+            if (verificar=="("&& rtb.IndexOf("∫") < 0)
             {
                 cos = cos.Substring(0,3);
                 sen = sen.Substring(0,3);
                 tan = tan.Substring(0,3);
             }
-            else if(rtb.IndexOf("∫")>=0)
+            else if(rtb.IndexOf("∫")>=0&& verificar != "(")
             {
                 cos += "(";
                 sen += "(";

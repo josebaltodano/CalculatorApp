@@ -270,7 +270,7 @@ namespace Infraestructura.Metodos
                 Total += fx[i];
                 ValorY.Add(fx[i]);
             }
-            return Math.Abs(a1 * Total);
+            return (a1 * Total);
         }
 
         public double Limit;

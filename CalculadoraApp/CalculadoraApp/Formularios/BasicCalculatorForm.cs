@@ -104,14 +104,15 @@ namespace CalculadoraApp.Formularios
             txtInferior.Visible = txtI;
             txtSuperior.Visible = txtS;
             string cos = btnCos.Text, sen = btnSen.Text, tan = btnTan.Text;
+            rtbOperacion.Text = string.Empty;
+            txtView.Text = "0";
             metodoDeOperaciones.ParentesisT(ref cos, ref sen, ref tan,rtbOperacion.Text);
             btnCos.Text = cos;
             btnSen.Text = sen;
             btnTan.Text = tan;
             btnVariable.Visible = false;
             btnParentesis.Visible = false;
-            rtbOperacion.Text = string.Empty;
-            txtView.Text = "0";
+            btnGraficarArea.Visible = false;
         }
         private void btnBorrar_Click(object sender, EventArgs e)
         {
@@ -205,6 +206,7 @@ namespace CalculadoraApp.Formularios
             label2.Visible = true;
             txtInferior.Visible = true;
             txtSuperior.Visible = true;
+            btnGraficarArea.Visible = true;
             rtbOperacion.Text = button.Text;
             string cos = btnCos.Text, sen = btnSen.Text, tan = btnTan.Text;
             txtView.Text = "0";
@@ -270,6 +272,18 @@ namespace CalculadoraApp.Formularios
                 MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void btnInformation_Click(object sender, EventArgs e)
+        {
+            //MessageBox.Show()
+            string info = $"Esta es una calculadora cientifica capaz de calcular y graficar algunos tipos de integrales. " +
+                $"Las ecuaciones que puede resolver son solamente de tipo trigonometricas y polinomicas pero no las dos juntas ejemplo :Cos(x)X. " +
+                $"Tampoco se puede resolver trigonometricas con potencias ejemplo: Cos(X)². " +
+                $"Otro detalle a considerar es que las ecuaciones trigonometricas se resuleven por medio del metodo del trapecio. " +
+                $"el cual tiene un margen de error del 4.4% las mayorias de las veces (dependiendo del calculo). " +
+                $"La grafica no soporta resultados muy elevados (Se recomienda no colocar potencias arriba de 10). ";
+            MessageBox.Show(info);
         }
     }
     

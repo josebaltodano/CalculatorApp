@@ -78,6 +78,7 @@ namespace CalculadoraApp.Formularios
             this.btnParentesis = new System.Windows.Forms.Button();
             this.btnVariable = new System.Windows.Forms.Button();
             this.btnGraficarArea = new System.Windows.Forms.Button();
+            this.btnInformation = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtView
@@ -100,7 +101,7 @@ namespace CalculadoraApp.Formularios
             this.btnBorrar.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnBorrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBorrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBorrar.Location = new System.Drawing.Point(198, 130);
+            this.btnBorrar.Location = new System.Drawing.Point(198, 132);
             this.btnBorrar.Name = "btnBorrar";
             this.btnBorrar.Size = new System.Drawing.Size(56, 45);
             this.btnBorrar.TabIndex = 4;
@@ -127,7 +128,7 @@ namespace CalculadoraApp.Formularios
             this.btnDividir.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnDividir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDividir.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDividir.Location = new System.Drawing.Point(322, 181);
+            this.btnDividir.Location = new System.Drawing.Point(321, 183);
             this.btnDividir.Name = "btnDividir";
             this.btnDividir.Size = new System.Drawing.Size(56, 45);
             this.btnDividir.TabIndex = 6;
@@ -142,7 +143,7 @@ namespace CalculadoraApp.Formularios
             this.btnQuitar.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnQuitar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuitar.Location = new System.Drawing.Point(321, 130);
+            this.btnQuitar.Location = new System.Drawing.Point(322, 132);
             this.btnQuitar.Name = "btnQuitar";
             this.btnQuitar.Size = new System.Drawing.Size(56, 45);
             this.btnQuitar.TabIndex = 7;
@@ -155,7 +156,7 @@ namespace CalculadoraApp.Formularios
             this.btnPorcentaje.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnPorcentaje.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPorcentaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPorcentaje.Location = new System.Drawing.Point(12, 128);
+            this.btnPorcentaje.Location = new System.Drawing.Point(12, 132);
             this.btnPorcentaje.Name = "btnPorcentaje";
             this.btnPorcentaje.Size = new System.Drawing.Size(56, 45);
             this.btnPorcentaje.TabIndex = 8;
@@ -169,7 +170,7 @@ namespace CalculadoraApp.Formularios
             this.btnBorrarTodo.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnBorrarTodo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBorrarTodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBorrarTodo.Location = new System.Drawing.Point(260, 130);
+            this.btnBorrarTodo.Location = new System.Drawing.Point(260, 132);
             this.btnBorrarTodo.Name = "btnBorrarTodo";
             this.btnBorrarTodo.Size = new System.Drawing.Size(56, 45);
             this.btnBorrarTodo.TabIndex = 9;
@@ -182,7 +183,7 @@ namespace CalculadoraApp.Formularios
             this.btnRaizCuadrada.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnRaizCuadrada.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRaizCuadrada.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRaizCuadrada.Location = new System.Drawing.Point(136, 177);
+            this.btnRaizCuadrada.Location = new System.Drawing.Point(136, 182);
             this.btnRaizCuadrada.Name = "btnRaizCuadrada";
             this.btnRaizCuadrada.Size = new System.Drawing.Size(56, 45);
             this.btnRaizCuadrada.TabIndex = 10;
@@ -196,7 +197,7 @@ namespace CalculadoraApp.Formularios
             this.btnPotencia.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnPotencia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPotencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPotencia.Location = new System.Drawing.Point(74, 179);
+            this.btnPotencia.Location = new System.Drawing.Point(74, 182);
             this.btnPotencia.Name = "btnPotencia";
             this.btnPotencia.Size = new System.Drawing.Size(56, 45);
             this.btnPotencia.TabIndex = 11;
@@ -220,7 +221,7 @@ namespace CalculadoraApp.Formularios
             // btn7
             // 
             this.btn7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn7.Location = new System.Drawing.Point(12, 230);
+            this.btn7.Location = new System.Drawing.Point(12, 233);
             this.btn7.Name = "btn7";
             this.btn7.Size = new System.Drawing.Size(56, 45);
             this.btn7.TabIndex = 13;
@@ -255,7 +256,7 @@ namespace CalculadoraApp.Formularios
             // btn9
             // 
             this.btn9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn9.Location = new System.Drawing.Point(136, 230);
+            this.btn9.Location = new System.Drawing.Point(136, 233);
             this.btn9.Name = "btn9";
             this.btn9.Size = new System.Drawing.Size(56, 45);
             this.btn9.TabIndex = 16;
@@ -279,7 +280,7 @@ namespace CalculadoraApp.Formularios
             // btn8
             // 
             this.btn8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn8.Location = new System.Drawing.Point(74, 230);
+            this.btn8.Location = new System.Drawing.Point(74, 233);
             this.btn8.Name = "btn8";
             this.btn8.Size = new System.Drawing.Size(56, 45);
             this.btn8.TabIndex = 18;
@@ -293,7 +294,7 @@ namespace CalculadoraApp.Formularios
             this.btnMultiplicar.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnMultiplicar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMultiplicar.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMultiplicar.Location = new System.Drawing.Point(321, 232);
+            this.btnMultiplicar.Location = new System.Drawing.Point(321, 234);
             this.btnMultiplicar.Name = "btnMultiplicar";
             this.btnMultiplicar.Size = new System.Drawing.Size(56, 45);
             this.btnMultiplicar.TabIndex = 19;
@@ -373,7 +374,7 @@ namespace CalculadoraApp.Formularios
             this.btnIgual.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIgual.Location = new System.Drawing.Point(322, 383);
             this.btnIgual.Name = "btnIgual";
-            this.btnIgual.Size = new System.Drawing.Size(56, 45);
+            this.btnIgual.Size = new System.Drawing.Size(118, 45);
             this.btnIgual.TabIndex = 25;
             this.btnIgual.Tag = "=";
             this.btnIgual.Text = "=";
@@ -423,7 +424,7 @@ namespace CalculadoraApp.Formularios
             this.btnSen.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnSen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSen.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSen.Location = new System.Drawing.Point(198, 230);
+            this.btnSen.Location = new System.Drawing.Point(198, 234);
             this.btnSen.Name = "btnSen";
             this.btnSen.Size = new System.Drawing.Size(56, 45);
             this.btnSen.TabIndex = 29;
@@ -437,7 +438,7 @@ namespace CalculadoraApp.Formularios
             this.btnSenh.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnSenh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSenh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSenh.Location = new System.Drawing.Point(260, 230);
+            this.btnSenh.Location = new System.Drawing.Point(259, 234);
             this.btnSenh.Name = "btnSenh";
             this.btnSenh.Size = new System.Drawing.Size(56, 45);
             this.btnSenh.TabIndex = 30;
@@ -451,7 +452,7 @@ namespace CalculadoraApp.Formularios
             this.btnCos.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnCos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCos.Location = new System.Drawing.Point(198, 180);
+            this.btnCos.Location = new System.Drawing.Point(198, 182);
             this.btnCos.Name = "btnCos";
             this.btnCos.Size = new System.Drawing.Size(56, 45);
             this.btnCos.TabIndex = 31;
@@ -465,7 +466,7 @@ namespace CalculadoraApp.Formularios
             this.btnCosh.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnCosh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCosh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCosh.Location = new System.Drawing.Point(260, 181);
+            this.btnCosh.Location = new System.Drawing.Point(260, 182);
             this.btnCosh.Name = "btnCosh";
             this.btnCosh.Size = new System.Drawing.Size(56, 45);
             this.btnCosh.TabIndex = 32;
@@ -507,7 +508,7 @@ namespace CalculadoraApp.Formularios
             this.button7.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(12, 179);
+            this.button7.Location = new System.Drawing.Point(12, 183);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(56, 45);
             this.button7.TabIndex = 35;
@@ -562,7 +563,7 @@ namespace CalculadoraApp.Formularios
             this.btnRad.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnRad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRad.Location = new System.Drawing.Point(136, 130);
+            this.btnRad.Location = new System.Drawing.Point(136, 132);
             this.btnRad.Name = "btnRad";
             this.btnRad.Size = new System.Drawing.Size(56, 45);
             this.btnRad.TabIndex = 39;
@@ -576,7 +577,7 @@ namespace CalculadoraApp.Formularios
             this.btnGrad.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnGrad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGrad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGrad.Location = new System.Drawing.Point(74, 130);
+            this.btnGrad.Location = new System.Drawing.Point(74, 132);
             this.btnGrad.Name = "btnGrad";
             this.btnGrad.Size = new System.Drawing.Size(56, 45);
             this.btnGrad.TabIndex = 40;
@@ -610,7 +611,7 @@ namespace CalculadoraApp.Formularios
             this.btnIntegral.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnIntegral.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIntegral.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIntegral.Location = new System.Drawing.Point(383, 130);
+            this.btnIntegral.Location = new System.Drawing.Point(384, 132);
             this.btnIntegral.Name = "btnIntegral";
             this.btnIntegral.Size = new System.Drawing.Size(56, 45);
             this.btnIntegral.TabIndex = 43;
@@ -663,7 +664,7 @@ namespace CalculadoraApp.Formularios
             this.btnParentesis.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnParentesis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnParentesis.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnParentesis.Location = new System.Drawing.Point(383, 181);
+            this.btnParentesis.Location = new System.Drawing.Point(383, 183);
             this.btnParentesis.Name = "btnParentesis";
             this.btnParentesis.Size = new System.Drawing.Size(56, 45);
             this.btnParentesis.TabIndex = 60;
@@ -678,7 +679,7 @@ namespace CalculadoraApp.Formularios
             this.btnVariable.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnVariable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVariable.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVariable.Location = new System.Drawing.Point(383, 229);
+            this.btnVariable.Location = new System.Drawing.Point(383, 234);
             this.btnVariable.Name = "btnVariable";
             this.btnVariable.Size = new System.Drawing.Size(56, 45);
             this.btnVariable.TabIndex = 61;
@@ -693,14 +694,29 @@ namespace CalculadoraApp.Formularios
             this.btnGraficarArea.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnGraficarArea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGraficarArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGraficarArea.Location = new System.Drawing.Point(384, 383);
+            this.btnGraficarArea.Location = new System.Drawing.Point(383, 284);
             this.btnGraficarArea.Name = "btnGraficarArea";
             this.btnGraficarArea.Size = new System.Drawing.Size(55, 45);
             this.btnGraficarArea.TabIndex = 62;
             this.btnGraficarArea.Tag = "x";
             this.btnGraficarArea.Text = "Graficar Area";
             this.btnGraficarArea.UseVisualStyleBackColor = false;
+            this.btnGraficarArea.Visible = false;
             this.btnGraficarArea.Click += new System.EventHandler(this.btnGraficarArea_Click);
+            // 
+            // btnInformation
+            // 
+            this.btnInformation.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnInformation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInformation.Location = new System.Drawing.Point(383, 334);
+            this.btnInformation.Name = "btnInformation";
+            this.btnInformation.Size = new System.Drawing.Size(55, 45);
+            this.btnInformation.TabIndex = 63;
+            this.btnInformation.Tag = "x";
+            this.btnInformation.Text = "Info";
+            this.btnInformation.UseVisualStyleBackColor = false;
+            this.btnInformation.Click += new System.EventHandler(this.btnInformation_Click);
             // 
             // BasicCalculatorForm
             // 
@@ -708,6 +724,7 @@ namespace CalculadoraApp.Formularios
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.ClientSize = new System.Drawing.Size(451, 440);
+            this.Controls.Add(this.btnInformation);
             this.Controls.Add(this.btnGraficarArea);
             this.Controls.Add(this.btnVariable);
             this.Controls.Add(this.btnParentesis);
@@ -817,5 +834,6 @@ namespace CalculadoraApp.Formularios
         private System.Windows.Forms.Button btnParentesis;
         private System.Windows.Forms.Button btnVariable;
         private System.Windows.Forms.Button btnGraficarArea;
+        private System.Windows.Forms.Button btnInformation;
     }
 }
