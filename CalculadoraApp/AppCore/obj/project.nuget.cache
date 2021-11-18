@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "L03baA0j9tgedIfqbnZBC26Ihwg8RMxOSh4n7bpVf1djfV7YQiZqs38bAYlS+BRmXJ93m3ew0ZSV9vninYtfow==",
+  "dgSpecHash": "TEFdRlt5NljfUvV9YPg+H71gXxQyImAWuhPHts6B0IlmQVFFi9kcJQbHLHZOAqwzxQnl3M7+YQIrf3TIIEnm5g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Usuario\\Desktop\\si\\CalculadoraApp\\AppCore\\AppCore.csproj",
+  "projectFilePath": "C:\\Users\\Usuario\\Desktop\\no\\CalculadoraApp\\AppCore\\AppCore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Usuario\\.nuget\\packages\\autofac\\6.3.0\\autofac.6.3.0.nupkg.sha512",
     "C:\\Users\\Usuario\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",

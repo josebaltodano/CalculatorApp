@@ -1,10 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\CalculadoraApp",
-    "\\CalculadoraApp\\Infraestructura",
-    "\\CalculadoraApp\\Infraestructura\\Metodos"
+    ""
   ],
-  "SelectedNode": "\\CalculadoraApp\\Infraestructura\\Metodos\\IntegralesModel.cs",
+  "SelectedNode": "\\CalculadoraApp.sln",
   "PreviewInSolutionExplorer": false
 }

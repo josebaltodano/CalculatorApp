@@ -544,11 +544,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\si\\CalculadoraApp\\AppCore\\AppCore.csproj",
+      "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\no\\CalculadoraApp\\AppCore\\AppCore.csproj",
       "projectName": "AppCore",
-      "projectPath": "C:\\Users\\Usuario\\Desktop\\si\\CalculadoraApp\\AppCore\\AppCore.csproj",
+      "projectPath": "C:\\Users\\Usuario\\Desktop\\no\\CalculadoraApp\\AppCore\\AppCore.csproj",
       "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Usuario\\Desktop\\si\\CalculadoraApp\\AppCore\\obj\\",
+      "outputPath": "C:\\Users\\Usuario\\Desktop\\no\\CalculadoraApp\\AppCore\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -565,11 +565,11 @@
         "netstandard2.0": {
           "targetAlias": "netstandard2.0",
           "projectReferences": {
-            "C:\\Users\\Usuario\\Desktop\\si\\CalculadoraApp\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\Usuario\\Desktop\\si\\CalculadoraApp\\Domain\\Domain.csproj"
+            "C:\\Users\\Usuario\\Desktop\\no\\CalculadoraApp\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\Usuario\\Desktop\\no\\CalculadoraApp\\Domain\\Domain.csproj"
             },
-            "C:\\Users\\Usuario\\Desktop\\si\\CalculadoraApp\\Infraestructura\\Infraestructura.csproj": {
-              "projectPath": "C:\\Users\\Usuario\\Desktop\\si\\CalculadoraApp\\Infraestructura\\Infraestructura.csproj"
+            "C:\\Users\\Usuario\\Desktop\\no\\CalculadoraApp\\Infraestructura\\Infraestructura.csproj": {
+              "projectPath": "C:\\Users\\Usuario\\Desktop\\no\\CalculadoraApp\\Infraestructura\\Infraestructura.csproj"
             }
           }
         }

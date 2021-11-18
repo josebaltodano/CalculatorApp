@@ -740,6 +740,10 @@ namespace Infraestructura.Metodos
             if (rtb.IndexOf("(") < 0)
             {
                 ObtenerNume(rtb);
+                if (rtb.Substring(rtb.Length - 1) == "^" && double.Parse(txt) < 0)
+                {
+                    throw new ArgumentException("Lo sentimos, no podemos resolver ecuaciones con exponentes negativos;");
+                }
                 rtb += txt;
                 if (verificar != "^")
                 {
@@ -784,7 +788,19 @@ namespace Infraestructura.Metodos
         {
             int poten = rtb.IndexOf("^");
             int posit = rtb.IndexOf("+");
-            string verificar = rtb.Substring(poten + 1);
+            string verificar = "";
+            if (poten > 0)
+            {
+                verificar = rtb.Substring(poten + 1);
+                string vr = rtb.Substring(poten+1);
+                if(double.TryParse(vr, out double h1))
+                {
+                    if (double.Parse(vr)<0)
+                    {
+                        throw new ArgumentException("Lo sentimos, no podemos resolver ecuaciones con exponentes negativos;");
+                    }
+                }
+            }
             if (posit > 0 || double.TryParse(verificar, out double h))
             {
                 int num = 0;
