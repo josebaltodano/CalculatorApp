@@ -30,30 +30,30 @@ namespace CalculadoraApp.Formularios
         private void chart1_MouseWheel(object sender, MouseEventArgs e)
         {
             var chart = (Chart)sender;
-            var xAxis = chart.ChartAreas[0].AxisX;
-            var yAxis = chart.ChartAreas[0].AxisY;
+            var x = chart.ChartAreas[0].AxisX;
+            var y = chart.ChartAreas[0].AxisY;
 
             try
             {
-                if (e.Delta < 0) // Scrolled down.
+                if (e.Delta < 0) 
                 {
-                    xAxis.ScaleView.ZoomReset();
-                    yAxis.ScaleView.ZoomReset();
+                    x.ScaleView.ZoomReset();
+                    y.ScaleView.ZoomReset();
                 }
-                else if (e.Delta > 0) // Scrolled up.
+                else if (e.Delta > 0) 
                 {
-                    var xMin = xAxis.ScaleView.ViewMinimum;
-                    var xMax = xAxis.ScaleView.ViewMaximum;
-                    var yMin = yAxis.ScaleView.ViewMinimum;
-                    var yMax = yAxis.ScaleView.ViewMaximum;
+                    var xMin = x.ScaleView.ViewMinimum;
+                    var xMax = x.ScaleView.ViewMaximum;
+                    var yMin = y.ScaleView.ViewMinimum;
+                    var yMax = y.ScaleView.ViewMaximum;
 
-                    var posXComien = xAxis.PixelPositionToValue(e.Location.X) - (xMax - xMin) / 4;
-                    var posXFinal = xAxis.PixelPositionToValue(e.Location.X) + (xMax - xMin) / 4;
-                    var posYComien = yAxis.PixelPositionToValue(e.Location.Y) - (yMax - yMin) / 4;
-                    var posYFinal = yAxis.PixelPositionToValue(e.Location.Y) + (yMax - yMin) / 4;
+                    var posXComien = x.PixelPositionToValue(e.Location.X) - (xMax - xMin) / 4;
+                    var posXFinal = x.PixelPositionToValue(e.Location.X) + (xMax - xMin) / 4;
+                    var posYComien = y.PixelPositionToValue(e.Location.Y) - (yMax - yMin) / 4;
+                    var posYFinal = y.PixelPositionToValue(e.Location.Y) + (yMax - yMin) / 4;
 
-                    xAxis.ScaleView.Zoom(posXComien, posXFinal);
-                    yAxis.ScaleView.Zoom(posYComien, posYFinal);
+                    x.ScaleView.Zoom(posXComien, posXFinal);
+                    y.ScaleView.Zoom(posYComien, posYFinal);
                 }
             }
             catch { }
@@ -73,8 +73,8 @@ namespace CalculadoraApp.Formularios
             {
                 StartZoom();
                 cViewArea.MouseWheel += chart1_MouseWheel;
-                cViewArea.ChartAreas["ChartArea1"].AxisY.Interval = 1; // Intervalo en el eje Y
-                cViewArea.ChartAreas["ChartArea1"].AxisX.Interval = 1; // Intervalo en el eje X
+                cViewArea.ChartAreas["ChartArea1"].AxisY.Interval = 1; 
+                cViewArea.ChartAreas["ChartArea1"].AxisX.Interval = 1; 
                 if (Math.Abs(R) < 10)
                 {
                     R = 10;
@@ -83,9 +83,8 @@ namespace CalculadoraApp.Formularios
                 double pos = LimitS + Math.Round(Math.Abs(R));
                 if (pos > 10000)
                 {
-                    //throw new ArgumentException("Lo sentimos, no se puede grafica ese area en este momento");
-                    pos = 2000;
-                    neg = -2000;
+                    pos = 1000;
+                    neg = -1000;
 
                 }
                 cViewArea.ChartAreas["ChartArea1"].AxisY.Minimum = (neg/2);
@@ -93,13 +92,16 @@ namespace CalculadoraApp.Formularios
                 cViewArea.ChartAreas["ChartArea1"].AxisX.Minimum = neg/2;
                 cViewArea.ChartAreas["ChartArea1"].AxisX.Maximum = pos / 2;
                 CreateEjes();
-               // GraficFuncion();
                 GraficArea();
+                X = new List<double>();
+                Y = new List<double>();
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                X = new List<double>();
+                Y = new List<double>();
                 Close();
             }
         }
@@ -126,16 +128,15 @@ namespace CalculadoraApp.Formularios
             for (int i = 0; i < Y.Count; i++)
             {
                 cViewArea.Series["Area"].Points.AddXY(X[i], Y[i]);
+                if (Y[i] > 10000 || Y[i] < -10000)
+                {
+                    throw new ArgumentException("Error, los puntos de la grafica son demasiado grande para poder señalarlos");
+                }
             }
         }
-        public void GraficFuncion()
+        private void cViewArea_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < Y.Count; i++)
-            {
-                cViewArea.Series["Fx"].Color = Color.Black;
-                cViewArea.Series["Fx"].Points.AddXY(X[i], Y[i]);
-            }
-        }
 
+        }
     }
 }

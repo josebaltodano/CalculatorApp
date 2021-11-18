@@ -30,6 +30,16 @@ namespace AppCore.Services
             return intregal.Cadena( ref a);
         }
 
+        public List<double> DeleteX()
+        {
+            return intregal.DeleteX();
+        }
+
+        public List<double> DeleteY()
+        {
+            return intregal.DeleteY();
+        }
+
         public void EscribirVariab(ref string rtb)
         {
             intregal.EscribirVariab(ref rtb);
@@ -45,10 +55,10 @@ namespace AppCore.Services
             return intregal.GetValorY();
         }
 
-        public int GradoPolin(string rtb)
+       /* public int GradoPolin(string rtb)
         {
             return intregal.GradoPolin(rtb);
-        }
+        }*/
 
         public void GuardarnumInteg(string txt, string button, string rtb)
         {
@@ -75,11 +85,6 @@ namespace AppCore.Services
             intregal.ObtenerNume(rtb);
         }
 
-        public void ObtenerSimb(string rtb)
-        {
-            intregal.ObtenerSimb(rtb);
-        }
-
         public void Operaciones(ref string txt, ref string rtb, string button, string txtI)
         {
             intregal.Operaciones(ref txt, ref rtb, button, txtI);
@@ -88,11 +93,6 @@ namespace AppCore.Services
         public void OperacionesCien(ref string txt, ref string rtb, string btn)
         {
             intregal.OperacionesCien(ref txt, ref rtb, btn);
-        }
-
-        public double OperarDentroParen(double Inferior, double Superior, int np)
-        {
-            return intregal.OperarDentroParen(Inferior, Superior, np);
         }
 
         public void Reiniciar(ref string txtIn, ref string txtSu, ref bool txtI, ref bool txtS)

@@ -65,18 +65,25 @@ namespace CalculadoraApp.Formularios
             else
             {
                 integrales.Igual(ref txt, ref rtb, txtInferior.Text, txtSuperior.Text);
+                    btnGraficarArea.Visible = true;
             }
-                string cos = btnCos.Text, sen = btnSen.Text, tan = btnTan.Text;
-                metodoDeOperaciones.ParentesisT(ref cos, ref sen, ref tan, rtbOperacion.Text);
+
+                string cos = btnCos.Text, sen = btnSen.Text, tan = btnTan.Text,
+                    cosh=btnCosh.Text,senh=btnSenh.Text,tanh=btnTanh.Text;
+                metodoDeOperaciones.ParentesisT(ref cos, ref sen, ref tan, rtbOperacion.Text,ref cosh,ref senh,ref tanh);
                 btnCos.Text = cos;
                 btnSen.Text = sen;
                 btnTan.Text = tan;
+                btnCosh.Text = cosh;
+                btnSenh.Text = senh;
+                btnTanh.Text = tanh;
                 txtView.Text = txt;
                 rtbOperacion.Text = rtb;
                 label1.Visible = false;
                 label2.Visible = false;
                 txtInferior.Visible = false;
                 txtSuperior.Visible = false;
+                btnInformation.Visible = false;
             }
             catch (Exception ex)
             {
@@ -93,35 +100,42 @@ namespace CalculadoraApp.Formularios
         }
         private void btnBorrarTodo_Click(object sender, EventArgs e)
         {
-            string txtIn = txtInferior.Text, txtSu = txtSuperior.Text;
-            bool txtI = txtInferior.Visible, txtS = txtSuperior.Visible;
-            integrales.Reiniciar(ref txtIn,ref txtSu,ref txtI,ref txtS);
-            metodoDeOperaciones.Reiniciar();
-            txtInferior.Text = txtIn;
-            txtSuperior.Text=txtSu;
-            label1.Visible = false;
-            label2.Visible = false;
-            txtInferior.Visible = txtI;
-            txtSuperior.Visible = txtS;
-            string cos = btnCos.Text, sen = btnSen.Text, tan = btnTan.Text;
-            rtbOperacion.Text = string.Empty;
-            txtView.Text = "0";
-            metodoDeOperaciones.ParentesisT(ref cos, ref sen, ref tan,rtbOperacion.Text);
-            btnCos.Text = cos;
-            btnSen.Text = sen;
-            btnTan.Text = tan;
-            btnVariable.Visible = false;
-            btnParentesis.Visible = false;
-            btnGraficarArea.Visible = false;
+            try
+            {
+                string txtIn = txtInferior.Text, txtSu = txtSuperior.Text;
+                bool txtI = txtInferior.Visible, txtS = txtSuperior.Visible;
+                integrales.Reiniciar(ref txtIn, ref txtSu, ref txtI, ref txtS);
+                metodoDeOperaciones.Reiniciar();
+                txtInferior.Text = txtIn;
+                txtSuperior.Text = txtSu;
+                label1.Visible = false;
+                label2.Visible = false;
+                txtInferior.Visible = txtI;
+                txtSuperior.Visible = txtS;
+                rtbOperacion.Text = string.Empty;
+                txtView.Text = "0";
+                string cos = btnCos.Text, sen = btnSen.Text, tan = btnTan.Text,
+                    cosh = btnCosh.Text, senh = btnSenh.Text, tanh = btnTanh.Text;
+                txtView.Text = "0";
+                metodoDeOperaciones.ParentesisT(ref cos, ref sen, ref tan, rtbOperacion.Text, ref cosh, ref senh, ref tanh);
+                btnCos.Text = cos;
+                btnSen.Text = sen;
+                btnTan.Text = tan;
+                btnCosh.Text = cosh;
+                btnSenh.Text = senh;
+                btnTanh.Text = tanh;
+                btnVariable.Visible = false;
+                btnParentesis.Visible = false;
+                btnGraficarArea.Visible = false;
+                btnInformation.Visible = false;
+            }catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void btnBorrar_Click(object sender, EventArgs e)
         {
-            //TODO: aqui se hizo un cambio
             txtView.Text = "0";
-            if (metodoDeOperaciones.GetOperador() == 'v')
-            {
-                rtbOperacion.Text = string.Empty;
-            }
         }
         private void ClickOperaciones(object sender, EventArgs e)
         {
@@ -148,7 +162,6 @@ namespace CalculadoraApp.Formularios
         {
             try
             {
-                integrales.ObtenerSimb(rtbOperacion.Text);
                 var button = (Button)sender;
                 string txt = txtView.Text, rtb = rtbOperacion.Text;
                 if (rtbOperacion.Text.IndexOf("∫") < 0)
@@ -183,48 +196,48 @@ namespace CalculadoraApp.Formularios
                 metodoDeOperaciones.Ang('r');
             }
         }
-
-        private void txtView_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BasicCalculatorForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rtbOperacion_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnIntegral_Click(object sender, EventArgs e)
         {
-            var button = (Button)sender;
-            label1.Visible = true;
-            label2.Visible = true;
-            txtInferior.Visible = true;
-            txtSuperior.Visible = true;
-            btnGraficarArea.Visible = true;
-            rtbOperacion.Text = button.Text;
-            string cos = btnCos.Text, sen = btnSen.Text, tan = btnTan.Text;
-            txtView.Text = "0";
-            metodoDeOperaciones.ParentesisT(ref cos,ref sen,ref tan,rtbOperacion.Text);
-            btnCos.Text = cos;
-            btnSen.Text = sen;
-            btnTan.Text = tan;
-            btnVariable.Visible = true;
-            btnParentesis.Visible = true;
+            try
+            {
+                var button = (Button)sender;
+                label1.Visible = true;
+                label2.Visible = true;
+                txtInferior.Visible = true;
+                txtSuperior.Visible = true;
+                rtbOperacion.Text = button.Text;
+                string cos = btnCos.Text, sen = btnSen.Text, tan = btnTan.Text,
+                    cosh = btnCosh.Text, senh = btnSenh.Text, tanh = btnTanh.Text;
+                txtView.Text = "0";
+                metodoDeOperaciones.ParentesisT(ref cos, ref sen, ref tan, rtbOperacion.Text, ref cosh, ref senh, ref tanh);
+                btnCos.Text = cos;
+                btnSen.Text = sen;
+                btnTan.Text = tan;
+                btnCosh.Text = cosh;
+                btnSenh.Text = senh;
+                btnTanh.Text = tanh;
+                btnVariable.Visible = true;
+                btnParentesis.Visible = true;
+                btnInformation.Visible = true;
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void btnParentesis_Click(object sender, EventArgs e)
         {
-            string rtb= rtbOperacion.Text;
-            string txtI = txtInferior.Text;
-            string txt = txtView.Text;
-            integrales.AddC(ref rtb ,txtI,ref txt);
-            rtbOperacion.Text = rtb;
-            txtView.Text = txt;
+            try
+            {
+                string rtb = rtbOperacion.Text;
+                string txtI = txtInferior.Text;
+                string txt = txtView.Text;
+                integrales.AddC(ref rtb, txtI, ref txt);
+                rtbOperacion.Text = rtb;
+                txtView.Text = txt;
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnVariable_Click(object sender, EventArgs e)
@@ -259,13 +272,16 @@ namespace CalculadoraApp.Formularios
         {
             try
             {
-                //TODO: aqui se cambio algo
-                GraphicsForm graphics = new GraphicsForm(integrales.GetValorX(), integrales.GetValorY(), double.Parse(txtInferior.Text), double.Parse(txtSuperior.Text), double.Parse(txtView.Text));
+                double verificar = double.Parse(txtView.Text);
+                if (verificar > 10000)
+                {
+                    verificar = 9000;
+                }
+                GraphicsForm graphics = new GraphicsForm(integrales.GetValorX(), integrales.GetValorY(), double.Parse(txtInferior.Text), double.Parse(txtSuperior.Text),verificar);
                 graphics.ShowDialog();
-                var valorX = integrales.GetValorX();
-                valorX = new List<double>();
-                var valorY = integrales.GetValorY();
-                valorY = new List<double>();
+                integrales.DeleteX();
+                integrales.DeleteY();
+                btnGraficarArea.Visible = false;
             }
             catch(Exception ex)
             {
@@ -276,14 +292,18 @@ namespace CalculadoraApp.Formularios
 
         private void btnInformation_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show()
             string info = $"Esta es una calculadora cientifica capaz de calcular y graficar algunos tipos de integrales. " +
                 $"Las ecuaciones que puede resolver son solamente de tipo trigonometricas y polinomicas pero no las dos juntas ejemplo :Cos(x)X. " +
-                $"Tampoco se puede resolver trigonometricas con potencias ejemplo: Cos(X)². " +
-                $"Otro detalle a considerar es que las ecuaciones trigonometricas se resuleven por medio del metodo del trapecio. " +
-                $"el cual tiene un margen de error del 4.4% las mayorias de las veces (dependiendo del calculo). " +
-                $"La grafica no soporta resultados muy elevados (Se recomienda no colocar potencias arriba de 10). ";
-            MessageBox.Show(info);
+                $"Tampoco se puede resolver trigonometricas con potencias ejemplo: Cos(X)², ní exponenciales entre otras.  " +
+                $"Otro detalle a considerar es que las ecuaciones trigonometricas se resuleven por medio del metodo del trapecio, " +
+                $"el cual tiene un margen de error del 4.4% las mayorias de las veces (dependiendo de la complejidad del calculo).{Environment.NewLine}{Environment.NewLine} " +
+                $"La grafica no soporta resultados muy elevados (Se recomienda no colocar potencias arriba de 12). ";
+            MessageBox.Show(info, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void BasicCalculatorForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
     

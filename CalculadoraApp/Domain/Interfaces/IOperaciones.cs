@@ -15,7 +15,7 @@ namespace Domain.Interfaces
         void Quitar(ref string txt, ref string rtb);
         void Operaciones(ref string txt, ref string rtb, string button, string txtI);
         void ViewNumber(ref string txt, ref string rtb, string button);
-        void ParentesisT(ref string cos, ref string sen, ref string tan, string rtb);
+        void ParentesisT(ref string cos, ref string sen, ref string tan, string rtb, ref string cosh, ref string senh, ref string tanh);
         void Reiniciar();
         int GradoPolin(string rtb);
         char GetOperador();

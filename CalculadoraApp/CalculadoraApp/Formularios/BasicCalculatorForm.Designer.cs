@@ -94,7 +94,6 @@ namespace CalculadoraApp.Formularios
             this.txtView.TabIndex = 0;
             this.txtView.Text = "0";
             this.txtView.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtView.TextChanged += new System.EventHandler(this.txtView_TextChanged);
             // 
             // btnBorrar
             // 
@@ -417,7 +416,6 @@ namespace CalculadoraApp.Formularios
             this.rtbOperacion.Size = new System.Drawing.Size(430, 30);
             this.rtbOperacion.TabIndex = 28;
             this.rtbOperacion.Text = "";
-            this.rtbOperacion.TextChanged += new System.EventHandler(this.rtbOperacion_TextChanged);
             // 
             // btnSen
             // 
@@ -437,7 +435,7 @@ namespace CalculadoraApp.Formularios
             // 
             this.btnSenh.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnSenh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSenh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSenh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSenh.Location = new System.Drawing.Point(259, 234);
             this.btnSenh.Name = "btnSenh";
             this.btnSenh.Size = new System.Drawing.Size(56, 45);
@@ -465,7 +463,7 @@ namespace CalculadoraApp.Formularios
             // 
             this.btnCosh.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnCosh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCosh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCosh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCosh.Location = new System.Drawing.Point(260, 182);
             this.btnCosh.Name = "btnCosh";
             this.btnCosh.Size = new System.Drawing.Size(56, 45);
@@ -512,9 +510,10 @@ namespace CalculadoraApp.Formularios
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(56, 45);
             this.button7.TabIndex = 35;
-            this.button7.Tag = "*";
+            this.button7.Tag = "i";
             this.button7.Text = "x^-1";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.ClickOperaciones);
             // 
             // btn_e
             // 
@@ -534,8 +533,8 @@ namespace CalculadoraApp.Formularios
             // 
             this.btnTanh.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnTanh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTanh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTanh.Location = new System.Drawing.Point(260, 281);
+            this.btnTanh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTanh.Location = new System.Drawing.Point(259, 283);
             this.btnTanh.Name = "btnTanh";
             this.btnTanh.Size = new System.Drawing.Size(56, 45);
             this.btnTanh.TabIndex = 37;

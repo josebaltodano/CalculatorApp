@@ -56,9 +56,9 @@ namespace AppCore.Services
             operaciones.OperacionesCien(ref txt, ref rtb, btn);
         }
 
-        public void ParentesisT(ref string cos, ref string sen, ref string tan, string rtb)
+        public void ParentesisT(ref string cos, ref string sen, ref string tan, string rtb,ref string cosh,ref string senh,ref string tanh)
         {
-            operaciones.ParentesisT(ref cos, ref sen, ref tan, rtb);
+            operaciones.ParentesisT(ref cos, ref sen, ref tan, rtb,ref cosh,ref senh,ref tanh);
         }
 
         public void Quitar(ref string txt, ref string rtb)

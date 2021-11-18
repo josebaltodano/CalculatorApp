@@ -10,16 +10,12 @@ namespace Infraestructura.Metodos
 {
     public class MetodoDeOperaciones : IOperaciones
     {
-
-        #region MetodosBasicos
-        private OperacionesBasicas operacionesBasicas = new OperacionesBasicas();
-        public double[] numeros;
-        int a1 = 0, b = 0, a;
-        public int y = 0;
-        public char operador = 'v';
-        public double numero1 = 0, numero2 = 0;
-        string operadorT = "";
-        char AngPlano = 'r';
+        private int a1 = 0, b = 0, a;
+        private char operador = 'v';
+        private double numero1 = 0, numero2 = 0;
+        private string operadorT = "";
+        private char AngPlano = 'r';
+        private double r = 0;
         public void Ang(char an)
         {
             AngPlano = an;
@@ -37,7 +33,6 @@ namespace Infraestructura.Metodos
                 a++;
             }
         }
-        double r = 0;
         public double Resultado()
         {
 
@@ -47,8 +42,8 @@ namespace Infraestructura.Metodos
 
                     if (AngPlano == 'r')
                     {
-                        Guardarnum(Math.Cos(numero2));
                         r = Math.Cos(numero2);
+                        Guardarnum(r);
                         //numero1 = 0;
                         operadorT = "";
                         //operador = 'v';
@@ -67,8 +62,9 @@ namespace Infraestructura.Metodos
                 case "Sen":
                     if (AngPlano == 'r')
                     {
-                        Guardarnum(Math.Sin(numero2));
                         r = Math.Sin(numero2);
+                        Guardarnum(r);
+                        
                         operadorT = "";
                         //operador = 'v';
                     }
@@ -84,8 +80,9 @@ namespace Infraestructura.Metodos
                 case "Tan":
                     if (AngPlano == 'r')
                     {
-                        Guardarnum(Math.Tan(numero2));
                         r = Math.Tan(numero2);
+                        Guardarnum(r);
+                        
                         operadorT = "";
                         //operador = 'v';
                     }
@@ -102,8 +99,9 @@ namespace Infraestructura.Metodos
 
                     if (AngPlano == 'r')
                     {
-                        Guardarnum(Math.Cosh(numero2));
                         r = Math.Cosh(numero2);
+                        Guardarnum(r);
+                        
                         operadorT = "";
                         //operador = 'v';
                     }
@@ -121,8 +119,9 @@ namespace Infraestructura.Metodos
 
                     if (AngPlano == 'r')
                     {
-                        Guardarnum(Math.Sinh(numero2));
                         r = Math.Sinh(numero2);
+                        Guardarnum(r);
+                        
                         operadorT = "";
                         //operador = 'v';
                     }
@@ -139,8 +138,9 @@ namespace Infraestructura.Metodos
 
                     if (AngPlano == 'r')
                     {
-                        Guardarnum(Math.Tanh(numero2));
                         r = Math.Tanh(numero2);
+                        Guardarnum(r);
+                        
                         operadorT = "";
                     }
                     else
@@ -195,9 +195,18 @@ namespace Infraestructura.Metodos
                     numero2 = 0;
                     break;
                 case '√':
-                    r = Math.Sqrt(numero2);
-                    numero1 = r;
-                    numero2 = 0;
+                    if (numero1 != 0)
+                    {
+                        r = Math.Sqrt(numero1);
+                        numero1 = r;
+                        numero2 = 0;
+                    }
+                    else
+                    {
+                        r = Math.Sqrt(numero2);
+                        numero1 = r;
+                        numero2 = 0;
+                    }
                     break;
                 case '%':
                     r = (numero1 * numero2) / 100;
@@ -213,6 +222,20 @@ namespace Infraestructura.Metodos
                     r = Math.Log(numero2, Math.E);
                     numero1 = r;
                     numero2 = 0;
+                    break;
+                case 'i':
+                    if (numero1==0)
+                    {
+                        r = Math.Pow(numero2, -1);
+                        numero1 = r;
+                        numero2 = 0;
+                    }
+                    else
+                    {
+                        r = Math.Pow(numero1, -1);
+                        numero1 = r;
+                        numero2 = 0;
+                    }
                     break;
             }
             return r;
@@ -259,9 +282,14 @@ namespace Infraestructura.Metodos
         }
         public void OperacionesCien(ref string txt, ref string rtb, string btn)
         {
-            if (string.IsNullOrEmpty(rtb))
+            string verificar = "v";
+            if (rtb != string.Empty)
             {
-                rtb = "0";
+                verificar = rtb.Substring(rtb.Length - 1);
+            }
+            if (double.TryParse(verificar, out double h))
+            {
+                return;
             }
             if (btn == "Log")
             {
@@ -273,7 +301,6 @@ namespace Infraestructura.Metodos
             }
             {
                 string op = operador.ToString();
-                string verificar = rtb.Substring(rtb.Length - 1);
                 Guardarnum(double.Parse(txt));
                 if (double.TryParse(verificar, out double f))
                 {
@@ -326,7 +353,7 @@ namespace Infraestructura.Metodos
                         rtb += $"{operador}" + txt;
                         txt = Resultado().ToString();
                         rtb += " = " + txt;
-                        a = 0;
+                       // a = 0;
                     }
                 }
                 else
@@ -335,7 +362,7 @@ namespace Infraestructura.Metodos
                     rtb += txt;
                     txt = Resultado().ToString();
                     rtb += " = " + txt;
-                    a = 0;
+                    //a = 0;
                 }
             }
         }
@@ -357,7 +384,6 @@ namespace Infraestructura.Metodos
         
         public void Operaciones(ref string txt, ref string rtb, string button, string txtI)
         {
-            int si = 0;
             if (rtb != string.Empty)
             {
                 string verificar = rtb.Substring(rtb.Length - 1);
@@ -375,15 +401,27 @@ namespace Infraestructura.Metodos
                     return;
                 }
             }
+            if (button == "i")
             {
+                Guardarnum(double.Parse(txt));
+                operador = 'i';
+                txt = Resultado().ToString();
+                rtb = txt;
+                return;
+                
+            }
                 if (button != "√")
                 {
                     rtb = txt;
                 }
                 else
                 {
-                    rtb = string.Empty;
-                }
+                Guardarnum(double.Parse(txt));
+                operador = '√';
+                txt = Resultado().ToString();
+                rtb = txt;
+                return;
+            }
                 if (a1 >= 1)
                 {
                     Guardarnum(double.Parse(txt));
@@ -423,7 +461,7 @@ namespace Infraestructura.Metodos
                     }
                 }
                 a1++;
-            }
+            
         }
         public void ViewNumber(ref string txt, ref string rtb, string button)
         {
@@ -451,7 +489,7 @@ namespace Infraestructura.Metodos
                 txt += button;
             }
         }
-        public void ParentesisT(ref string cos,ref string sen, ref string tan,string rtb)
+        public void ParentesisT(ref string cos,ref string sen, ref string tan,string rtb,ref string cosh, ref string senh, ref string tanh)
         {
             string verificar = cos.Substring(cos.Length - 1);
             if (verificar=="("&& rtb.IndexOf("∫") < 0)
@@ -459,12 +497,18 @@ namespace Infraestructura.Metodos
                 cos = cos.Substring(0,3);
                 sen = sen.Substring(0,3);
                 tan = tan.Substring(0,3);
+                cosh = cosh.Substring(0, 4);
+                senh = senh.Substring(0,4);
+                tanh = tanh.Substring(0, 4);
             }
             else if(rtb.IndexOf("∫")>=0&& verificar != "(")
             {
                 cos += "(";
                 sen += "(";
                 tan += "(";
+                cosh += "(";
+                senh += "(";
+                tanh += "(";
 
             }
         }
@@ -522,6 +566,5 @@ namespace Infraestructura.Metodos
         {
             return operador;
         }
-        #endregion
     }
 }
