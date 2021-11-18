@@ -2,10 +2,6 @@
   "ExpandedNodes": [
     "",
     "\\CalculadoraApp",
-    "\\CalculadoraApp\\CalculadoraApp",
-    "\\CalculadoraApp\\CalculadoraApp\\Formularios",
-    "\\CalculadoraApp\\Domain",
-    "\\CalculadoraApp\\Domain\\Interfaces",
     "\\CalculadoraApp\\Infraestructura",
     "\\CalculadoraApp\\Infraestructura\\Metodos"
   ],

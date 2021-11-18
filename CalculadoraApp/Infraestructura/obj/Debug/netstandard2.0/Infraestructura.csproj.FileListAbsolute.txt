@@ -35,3 +35,15 @@ C:\Users\Usuario\Desktop\CalculatorApp\CalculadoraApp\Infraestructura\obj\Debug\
 C:\Users\Usuario\Desktop\CalculatorApp\CalculadoraApp\Infraestructura\obj\Debug\netstandard2.0\Infraestructura.csproj.CopyComplete
 C:\Users\Usuario\Desktop\CalculatorApp\CalculadoraApp\Infraestructura\obj\Debug\netstandard2.0\Infraestructura.dll
 C:\Users\Usuario\Desktop\CalculatorApp\CalculadoraApp\Infraestructura\obj\Debug\netstandard2.0\Infraestructura.pdb
+C:\Users\Usuario\Desktop\si\CalculadoraApp\Infraestructura\bin\Debug\netstandard2.0\Infraestructura.deps.json
+C:\Users\Usuario\Desktop\si\CalculadoraApp\Infraestructura\bin\Debug\netstandard2.0\Infraestructura.dll
+C:\Users\Usuario\Desktop\si\CalculadoraApp\Infraestructura\bin\Debug\netstandard2.0\Infraestructura.pdb
+C:\Users\Usuario\Desktop\si\CalculadoraApp\Infraestructura\bin\Debug\netstandard2.0\Domain.dll
+C:\Users\Usuario\Desktop\si\CalculadoraApp\Infraestructura\bin\Debug\netstandard2.0\Domain.pdb
+C:\Users\Usuario\Desktop\si\CalculadoraApp\Infraestructura\obj\Debug\netstandard2.0\Infraestructura.csproj.AssemblyReference.cache
+C:\Users\Usuario\Desktop\si\CalculadoraApp\Infraestructura\obj\Debug\netstandard2.0\Infraestructura.AssemblyInfoInputs.cache
+C:\Users\Usuario\Desktop\si\CalculadoraApp\Infraestructura\obj\Debug\netstandard2.0\Infraestructura.AssemblyInfo.cs
+C:\Users\Usuario\Desktop\si\CalculadoraApp\Infraestructura\obj\Debug\netstandard2.0\Infraestructura.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\si\CalculadoraApp\Infraestructura\obj\Debug\netstandard2.0\Infraestructura.csproj.CopyComplete
+C:\Users\Usuario\Desktop\si\CalculadoraApp\Infraestructura\obj\Debug\netstandard2.0\Infraestructura.dll
+C:\Users\Usuario\Desktop\si\CalculadoraApp\Infraestructura\obj\Debug\netstandard2.0\Infraestructura.pdb

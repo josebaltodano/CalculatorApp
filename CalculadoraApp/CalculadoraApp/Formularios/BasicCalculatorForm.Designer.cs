@@ -715,6 +715,7 @@ namespace CalculadoraApp.Formularios
             this.btnInformation.Tag = "x";
             this.btnInformation.Text = "Info";
             this.btnInformation.UseVisualStyleBackColor = false;
+            this.btnInformation.Visible = false;
             this.btnInformation.Click += new System.EventHandler(this.btnInformation_Click);
             // 
             // BasicCalculatorForm
